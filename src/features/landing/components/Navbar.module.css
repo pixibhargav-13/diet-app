@@ -1,0 +1,304 @@
+/* sr-only */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Header */
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+/* Nav container */
+.nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 24px;
+}
+
+/* Logo */
+.logoWrap {
+  flex: 1;
+  display: flex;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  margin: -6px;
+  padding: 6px;
+  transition: color 0.15s ease;
+}
+
+.logo:hover {
+  color: var(--color-secondary);
+}
+
+/* Desktop links */
+.desktopLinks {
+  display: none;
+  gap: 40px;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.navLink:hover {
+  color: var(--color-secondary);
+}
+
+/* Desktop CTAs */
+.desktopCtas {
+  display: none;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.ctaLogin {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.ctaLogin:hover {
+  color: var(--color-secondary);
+}
+
+.ctaOutline {
+  border-radius: 8px;
+  border: 1px solid var(--color-secondary);
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.ctaOutline:hover {
+  background-color: var(--color-bg);
+}
+
+.ctaSolid {
+  border-radius: 8px;
+  background-color: var(--color-primary);
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.ctaSolid:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Hamburger button */
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 10px;
+  margin: -10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-muted);
+  transition: color 0.15s ease;
+}
+
+.menuBtn:hover {
+  color: var(--color-primary);
+}
+
+.menuIcon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(17, 24, 39, 0.25);
+  backdrop-filter: blur(2px);
+}
+
+/* Drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  z-index: 51;
+  width: 100%;
+  max-width: 320px;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #ffffff;
+  padding: 24px;
+  box-sizing: border-box;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.closeBtn {
+  border-radius: 6px;
+  padding: 10px;
+  margin: -10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-muted);
+  transition: color 0.15s ease;
+}
+
+.closeBtn:hover {
+  color: var(--color-primary);
+}
+
+.drawerBody {
+  margin-top: 24px;
+}
+
+.drawerLinkGroup {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.drawerLink {
+  display: block;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2933;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.drawerLink:hover {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+}
+
+.drawerCtaGroup {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawerCtaLogin {
+  display: block;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2933;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.drawerCtaLogin:hover {
+  background-color: var(--color-bg);
+}
+
+.drawerCtaOutline {
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--color-secondary);
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.drawerCtaOutline:hover {
+  background-color: var(--color-bg);
+}
+
+.drawerCtaSolid {
+  display: block;
+  border-radius: 8px;
+  background-color: var(--color-primary);
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.drawerCtaSolid:hover {
+  background-color: var(--color-secondary);
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    padding: 16px 32px;
+  }
+  .desktopLinks {
+    display: flex;
+  }
+  .desktopCtas {
+    display: flex;
+  }
+  .menuBtn {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .nav {
+    padding: 16px 48px;
+  }
+}

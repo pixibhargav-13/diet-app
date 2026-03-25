@@ -1,0 +1,167 @@
+/* Section */
+.section {
+  background-color: var(--color-bg);
+  padding: 96px 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Left column */
+
+.textCol {
+  position: sticky;
+  top: 96px;
+}
+
+.eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin: 0 0 12px;
+}
+
+.heading {
+  font-size: 2.375rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111827;
+  line-height: 1.1;
+  margin: 0 0 20px;
+  text-wrap: pretty;
+}
+
+.subtext {
+  font-size: 1rem;
+  color: var(--color-muted);
+  line-height: 1.75;
+  margin: 0 0 36px;
+}
+
+.cta {
+  font-size: 0.9375rem;
+  font-style: italic;
+  color: var(--color-secondary);
+  line-height: 1.65;
+  margin: 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--color-accent);
+}
+
+/* Right column */
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 32px;
+}
+
+/* Feature item */
+.feature {
+  display: flex;
+  flex-direction: column;
+}
+
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+.iconWrap svg {
+  width: 22px;
+  height: 22px;
+  color: #ffffff;
+}
+
+.featureName {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.featureDesc {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 1199px) {
+  .container {
+    padding: 0 32px;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .layout {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .textCol {
+    position: static;
+  }
+
+  .heading {
+    font-size: 2.125rem;
+  }
+
+  .featureGrid {
+    gap: 32px 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .heading {
+    font-size: 1.875rem;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}

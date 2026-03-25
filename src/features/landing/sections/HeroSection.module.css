@@ -1,0 +1,522 @@
+/* ─── HeroSection.module.css ─────────────────────────────────────────────── */
+
+/* ── Wrapper & inner ─────────────────────────────────────────────────────── */
+.hero {
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  isolation: isolate;
+}
+
+/* ── Background grid ─────────────────────────────────────────────────────── */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  stroke: var(--color-border);
+  -webkit-mask-image: radial-gradient(
+    36rem 36rem at center,
+    white,
+    transparent
+  );
+  mask-image: radial-gradient(36rem 36rem at center, white, transparent);
+}
+
+/* ── Content container ───────────────────────────────────────────────────── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 140px 48px 80px;
+}
+
+/* ── Two-column layout ───────────────────────────────────────────────────── */
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* LEFT COLUMN                                                                 */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+.leftCol {
+  flex: 0 0 auto;
+  width: 460px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111827;
+  line-height: 1.08;
+  margin: 0 0 20px;
+}
+
+.subtext {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin: 0 0 32px;
+  max-width: 400px;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: var(--color-primary);
+  padding: 11px 22px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+  box-shadow: 0 1px 3px rgba(42, 67, 101, 0.2);
+}
+
+.btnPrimary:hover {
+  background-color: var(--color-secondary);
+}
+
+.btnSecondary {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.btnSecondary:hover {
+  color: var(--color-secondary);
+}
+
+/* ── Daily Progress card ─────────────────────────────────────────────────── */
+.progressCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 24px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  max-width: 380px;
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.progressIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-bg);
+  border: 1.5px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.progressLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.progressBarTrack {
+  height: 6px;
+  border-radius: 999px;
+  background-color: var(--color-border);
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  width: 65%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+}
+
+.questionLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 6px;
+}
+
+.questionText {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.progressFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+}
+
+.responseCount {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* RIGHT COLUMN                                                                */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+.rightCol {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Discovery Insights card ─────────────────────────────────────────────── */
+.insightCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 24px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.insightLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.insightEyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 6px;
+}
+
+.insightTitle {
+  font-size: 1.1875rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px;
+}
+
+.insightSub {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.insightStats {
+  display: flex;
+  gap: 24px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.insightStat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.statLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 2px;
+}
+
+.statValue {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1;
+  margin: 0;
+}
+
+/* ── Visual grid: 3 panels ───────────────────────────────────────────────── */
+.visualGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  height: 340px;
+}
+
+/* Panel base */
+.panel {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Panel 1 — activity / solid color */
+.panelActivity {
+  background: linear-gradient(135deg, #a8e44a 0%, #7bc67e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activityOrb {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+/* Panel 2 — yoga photo */
+.panelPhoto {
+  background: #1f2933;
+}
+
+.panelPhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.95;
+}
+
+/* Panel 3 — mindfulness + live session overlay */
+.panelMindful {
+  background: #c9b99a;
+}
+
+.panelMindful img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.liveOverlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+}
+
+.playBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.liveInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.liveEyebrow {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 2px;
+}
+
+.liveTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.liveBar {
+  height: 3px;
+  border-radius: 999px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.liveBarFill {
+  height: 100%;
+  width: 45%;
+  background: var(--color-primary);
+  border-radius: 999px;
+}
+
+/* inset ring on all panels */
+.panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* RESPONSIVE                                                                  */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/* 150% zoom on 1440px ≈ 960px effective width */
+@media (max-width: 1199px) {
+  .container {
+    padding: 120px 32px 64px;
+  }
+
+  .layout {
+    gap: 36px;
+  }
+
+  .leftCol {
+    width: 360px;
+  }
+
+  .heading {
+    font-size: 2.625rem;
+  }
+
+  .visualGrid {
+    height: 280px;
+  }
+}
+
+/* Tablet stacked */
+@media (max-width: 1023px) {
+  .layout {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .leftCol {
+    width: 100%;
+  }
+
+  .heading {
+    font-size: 2.875rem;
+  }
+
+  .progressCard {
+    max-width: 100%;
+  }
+
+  .visualGrid {
+    height: 260px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .container {
+    padding: 100px 20px 56px;
+  }
+
+  .layout {
+    gap: 36px;
+  }
+
+  .heading {
+    font-size: 2.125rem;
+    margin-bottom: 14px;
+  }
+
+  .subtext {
+    font-size: 1rem;
+    margin-bottom: 22px;
+  }
+
+  .ctaRow {
+    margin-bottom: 24px;
+  }
+
+  .insightCard {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .insightStats {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .insightStat {
+    align-items: flex-start;
+  }
+
+  .visualGrid {
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+    gap: 10px;
+  }
+
+  .panelMindful {
+    display: none;
+  }
+
+  .panelActivity,
+  .panelPhoto {
+    height: 190px;
+  }
+}
+
+@media (max-width: 479px) {
+  .heading {
+    font-size: 1.875rem;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+}
