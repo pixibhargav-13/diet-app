@@ -1,0 +1,103 @@
+/* ─── StepLayout.module.css ──────────────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.heading {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111827;
+  line-height: 1.15;
+  margin: 0 0 10px;
+}
+
+.subtext {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.content {
+  margin-bottom: 40px;
+}
+
+/* Nav row — back left, next right */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 22px;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 11px 0;
+  transition: color 0.15s ease;
+}
+
+.backBtn:hover {
+  color: #2a4365;
+}
+
+.nextBtn {
+  border-radius: 10px;
+  background-color: #2a4365;
+  padding: 12px 32px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+  min-width: 120px;
+}
+
+.nextBtn:hover:not(:disabled) {
+  background-color: #4a6fa5;
+}
+
+.nextBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nextBtnFinish {
+  background-color: #4a7c59; /* success green — signals completion */
+}
+
+.nextBtnFinish:hover:not(:disabled) {
+  background-color: #3a6349;
+}
+
+@media (max-width: 520px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+  .nav {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .nextBtn {
+    width: 100%;
+  }
+  .backBtn {
+    text-align: center;
+  }
+}

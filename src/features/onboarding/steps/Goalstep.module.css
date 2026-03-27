@@ -1,0 +1,89 @@
+/* ─── GoalStep.module.css ────────────────────────────────────────────────── */
+
+/* Full-width stacked cards like the Faire reference */
+.goalGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.goalCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.goalCard:hover {
+  border-color: #7faad6;
+  background: #f7fbff;
+}
+
+.goalCardSelected {
+  border-color: #2a4365;
+  background: #eef4fa;
+  box-shadow: 0 0 0 1px #2a4365;
+}
+
+.goalIcon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+.goalText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.goalLabel {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111827;
+  display: block;
+}
+
+.goalDesc {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  display: block;
+}
+
+/* Radio circle */
+.radioOuter {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+
+.radioOuterSelected {
+  border-color: #2a4365;
+}
+
+.radioInner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2a4365;
+}

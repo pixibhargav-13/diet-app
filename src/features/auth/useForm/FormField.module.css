@@ -1,0 +1,59 @@
+/* ─── FormField.module.css ───────────────────────────────────────────────── */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.required {
+  color: #c44545;
+}
+
+.input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  padding: 11px 14px;
+  font-size: 0.9375rem;
+  color: #1f2933;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:focus {
+  border-color: #2a4365;
+  box-shadow: 0 0 0 3px rgba(42, 67, 101, 0.1);
+}
+
+.inputError {
+  border-color: #c44545;
+  background-color: #fdecec;
+}
+
+.inputError:focus {
+  border-color: #c44545;
+  box-shadow: 0 0 0 3px rgba(196, 69, 69, 0.1);
+}
+
+.errorMsg {
+  font-size: 0.8125rem;
+  color: #c44545;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
