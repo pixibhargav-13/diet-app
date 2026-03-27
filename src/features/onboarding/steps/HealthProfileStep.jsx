@@ -1,45 +1,49 @@
-// Step 1 — health conditions (multi-select cards) + dietary preference
-import { useState } from 'react'
-import PropTypes from 'prop-types'
-import { useOnboardingStore } from '../../../store/useOnboardingStore'
-import StepLayout from '../components/StepLayout'
-import styles from './HealthProfileStep.module.css'
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { useOnboardingStore } from "../../../store/useOnboardingStore";
+import StepLayout from "../components/StepLayout";
+import styles from "./HealthProfileStep.module.css";
 
 const CONDITIONS = [
-  { id: 'diabetes',  label: 'Diabetes',  icon: '🩸' },
-  { id: 'thyroid',   label: 'Thyroid',   icon: '🦋' },
-  { id: 'pcod',      label: 'PCOD/PCOS', icon: '🔵' },
-  { id: 'allergies', label: 'Allergies', icon: '🌿' },
-  { id: 'none',      label: 'None of the above', icon: '✓' },
-]
+  { id: "diabetes", label: "Diabetes", icon: "🩸" },
+  { id: "thyroid", label: "Thyroid", icon: "🦋" },
+  { id: "pcod", label: "PCOD/PCOS", icon: "🔵" },
+  { id: "allergies", label: "Allergies", icon: "🌿" },
+  { id: "none", label: "None of the above", icon: "✓" },
+];
 
 const DIETARY = [
-  { id: 'veg',     label: 'Vegetarian' },
-  { id: 'non-veg', label: 'Non-Vegetarian' },
-  { id: 'vegan',   label: 'Vegan' },
-]
+  { id: "veg", label: "Vegetarian" },
+  { id: "non-veg", label: "Non-Vegetarian" },
+  { id: "vegan", label: "Vegan" },
+];
 
 export default function HealthProfileStep({ onNext }) {
-  const { healthProfile, setHealthProfile, setStep } = useOnboardingStore()
-  const [conditions, setConditions] = useState(healthProfile.conditions)
-  const [allergies, setAllergies]   = useState(healthProfile.allergies)
-  const [diet, setDiet]             = useState(healthProfile.dietaryPreference)
+  const { healthProfile, setHealthProfile, setStep } = useOnboardingStore();
+  const [conditions, setConditions] = useState(healthProfile.conditions);
+  const [allergies, setAllergies] = useState(healthProfile.allergies);
+  const [diet, setDiet] = useState(healthProfile.dietaryPreference);
 
   const toggleCondition = (id) => {
-    if (id === 'none') { setConditions(['none']); return }
+    if (id === "none") {
+      setConditions(["none"]);
+      return;
+    }
     setConditions((prev) => {
-      const without = prev.filter((c) => c !== 'none')
-      return without.includes(id) ? without.filter((c) => c !== id) : [...without, id]
-    })
-  }
+      const without = prev.filter((c) => c !== "none");
+      return without.includes(id)
+        ? without.filter((c) => c !== id)
+        : [...without, id];
+    });
+  };
 
-  const canProceed = diet !== ''
+  const canProceed = diet !== "";
 
   const handleNext = () => {
-    setHealthProfile({ conditions, allergies, dietaryPreference: diet })
-    setStep(2)
-    onNext()
-  }
+    setHealthProfile({ conditions, allergies, dietaryPreference: diet });
+    setStep(2);
+    onNext();
+  };
 
   return (
     <StepLayout
@@ -49,32 +53,45 @@ export default function HealthProfileStep({ onNext }) {
       nextDisabled={!canProceed}
     >
       {/* Conditions */}
-      <p className={styles.sectionLabel}>Do you have any of these conditions?</p>
+      <p className={styles.sectionLabel}>
+        Do you have any of these conditions?
+      </p>
       <div className={styles.conditionGrid}>
         {CONDITIONS.map((c) => {
-          const selected = conditions.includes(c.id)
+          const selected = conditions.includes(c.id);
           return (
             <button
               key={c.id}
               type="button"
               onClick={() => toggleCondition(c.id)}
-              className={`${styles.conditionCard} ${selected ? styles.conditionSelected : ''}`}
+              className={`${styles.conditionCard} ${selected ? styles.conditionSelected : ""}`}
               aria-pressed={selected}
             >
               <span className={styles.conditionIcon}>{c.icon}</span>
               <span className={styles.conditionLabel}>{c.label}</span>
-              <span className={`${styles.tick} ${selected ? styles.tickVisible : ''}`}>
-                <svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12">
-                  <path fillRule="evenodd" d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
+              <span
+                className={`${styles.tick} ${selected ? styles.tickVisible : ""}`}
+              >
+                <svg
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  width="12"
+                  height="12"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"
+                    clipRule="evenodd"
+                  />
                 </svg>
               </span>
             </button>
-          )
+          );
         })}
       </div>
 
       {/* Allergy text field — shown if allergies selected */}
-      {conditions.includes('allergies') && (
+      {conditions.includes("allergies") && (
         <div className={styles.allergyField}>
           <label htmlFor="allergy-detail" className={styles.fieldLabel}>
             Please describe your allergies
@@ -100,7 +117,7 @@ export default function HealthProfileStep({ onNext }) {
             key={d.id}
             type="button"
             onClick={() => setDiet(d.id)}
-            className={`${styles.dietChip} ${diet === d.id ? styles.dietChipSelected : ''}`}
+            className={`${styles.dietChip} ${diet === d.id ? styles.dietChipSelected : ""}`}
             aria-pressed={diet === d.id}
           >
             {d.label}
@@ -108,7 +125,7 @@ export default function HealthProfileStep({ onNext }) {
         ))}
       </div>
     </StepLayout>
-  )
+  );
 }
 
-HealthProfileStep.propTypes = { onNext: PropTypes.func.isRequired }
+HealthProfileStep.propTypes = { onNext: PropTypes.func.isRequired };
