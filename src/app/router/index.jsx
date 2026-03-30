@@ -6,7 +6,7 @@ import LandingPage from "../../features/landing/pages/LandingPage";
 import SignUpPage from "../../features/auth/signup/SignUpPage";
 import LoginPage from "../../features/auth/login/LoginPage";
 import OnboardingPage from "../../features/onboarding/OnboardingPage";
-import DashboardLayout from "../../features/dashboard/DashboardLayout";
+import Dashboard from "../../features/dashboard/Dashboard";
 // import HomePage from "../../features/home/Home";
 // import JournalPage from "../../features/journal/Journal";
 // import ProgressPage from "../../features/progress/Progress";
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <ProtectedRoute>
-        <DashboardLayout />
+        <Dashboard />
       </ProtectedRoute>
     ),
     // children: [
