@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "../router/ProtectedRoute";
 import GuestRoute from "../router/GuestRoute";
 
