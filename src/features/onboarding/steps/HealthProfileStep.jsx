@@ -1,15 +1,16 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { Droplets, Settings, Circle, Leaf, CheckCircle } from "lucide-react";
 import { useOnboardingStore } from "../../../store/useOnboardingStore";
 import StepLayout from "../components/StepLayout";
 import styles from "./HealthProfileStep.module.css";
 
 const CONDITIONS = [
-  { id: "diabetes", label: "Diabetes", icon: "🩸" },
-  { id: "thyroid", label: "Thyroid", icon: "🦋" },
-  { id: "pcod", label: "PCOD/PCOS", icon: "🔵" },
-  { id: "allergies", label: "Allergies", icon: "🌿" },
-  { id: "none", label: "None of the above", icon: "✓" },
+  { id: "diabetes", label: "Diabetes", Icon: Droplets },
+  { id: "thyroid", label: "Thyroid", Icon: Settings },
+  { id: "pcod", label: "PCOD/PCOS", Icon: Circle },
+  { id: "allergies", label: "Allergies", Icon: Leaf },
+  { id: "none", label: "None of the above", Icon: CheckCircle },
 ];
 
 const DIETARY = [
@@ -67,7 +68,9 @@ export default function HealthProfileStep({ onNext }) {
               className={`${styles.conditionCard} ${selected ? styles.conditionSelected : ""}`}
               aria-pressed={selected}
             >
-              <span className={styles.conditionIcon}>{c.icon}</span>
+              <span className={styles.conditionIcon}>
+                <c.Icon size={24} />
+              </span>
               <span className={styles.conditionLabel}>{c.label}</span>
               <span
                 className={`${styles.tick} ${selected ? styles.tickVisible : ""}`}

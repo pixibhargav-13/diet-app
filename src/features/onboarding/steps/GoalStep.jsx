@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { TrendingDown, TrendingUp, Zap, Heart, Scale } from "lucide-react";
 import { useOnboardingStore } from "../../../store/useOnboardingStore";
 import StepLayout from "../components/StepLayout";
 import styles from "./GoalStep.module.css";
@@ -8,31 +9,31 @@ const GOALS = [
   {
     id: "weight-loss",
     label: "Weight Loss",
-    icon: "📉",
+    Icon: TrendingDown,
     desc: "Lose body fat and reach a healthier weight",
   },
   {
     id: "weight-gain",
     label: "Weight Gain",
-    icon: "📈",
+    Icon: TrendingUp,
     desc: "Build mass with structured nutrition",
   },
   {
     id: "muscle-gain",
     label: "Muscle Gain",
-    icon: "💪",
+    Icon: Zap,
     desc: "Increase strength and lean muscle mass",
   },
   {
     id: "disease-management",
     label: "Disease Management",
-    icon: "🩺",
+    Icon: Heart,
     desc: "Manage diabetes, thyroid, PCOD, and more",
   },
   {
     id: "maintenance",
     label: "Maintenance",
-    icon: "⚖️",
+    Icon: Scale,
     desc: "Stay at your current weight and feel great",
   },
 ];
@@ -66,7 +67,9 @@ export default function GoalStep({ onNext, onBack }) {
               className={`${styles.goalCard} ${isSelected ? styles.goalCardSelected : ""}`}
               aria-pressed={isSelected}
             >
-              <span className={styles.goalIcon}>{g.icon}</span>
+              <span className={styles.goalIcon}>
+                <g.Icon size={28} />
+              </span>
               <div className={styles.goalText}>
                 <span className={styles.goalLabel}>{g.label}</span>
                 <span className={styles.goalDesc}>{g.desc}</span>
