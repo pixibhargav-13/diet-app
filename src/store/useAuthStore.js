@@ -1,89 +1,69 @@
-// Auth store — handles signup, login, logout state until backend is ready
-// Persisted to localStorage via zustand/middleware
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import demoUser from "./newUser";
 
-const mockNetworkDelay = () =>
-  new Promise((resolve) => setTimeout(resolve, 800));
+export const useAuthStore = create((set) => ({
+  user: null,
+  isAuthenticated: false,
+  isLoading: false,
+  error: null,
 
-export const useAuthStore = create(
-  persist(
-    (set) => ({
-      // ── State ──────────────────────────────────────────────────────────────
-      user: null,
-      isAuthenticated: false,
-      isLoading: false,
-      error: null,
+  signUp: async ({ firstName, lastName, email }) => {
+    set({ isLoading: true, error: null });
+    try {
+      await new Promise((r) => setTimeout(r, 800)); // simulate network
+      const user = {
+        id: crypto?.randomUUID ? crypto.randomUUID() : "local-" + Date.now(),
+        firstName,
+        lastName,
+        email,
+        createdAt: new Date().toISOString(),
+      };
 
-      // ── Sign up ────────────────────────────────────────────────────────────
-      signUp: async ({ firstName, lastName, email, password }) => {
-        set({ isLoading: true, error: null });
-        try {
-          if (!password) {
-            throw new Error("Password is required.");
-          }
+      // In-memory only for UI testing
+      set({ user, isAuthenticated: true, isLoading: false, error: null });
+      return { success: true, user };
+    } catch (err) {
+      const message =
+        err?.response?.data?.message ?? "Sign up failed. Please try again.";
+      set({ isLoading: false, error: message });
+      return { success: false, message };
+    }
+  },
 
-          await mockNetworkDelay();
+  // ── Login ──────────────────────────────────────────────────────────────
+  // Placeholder — swap the body for a real API call when backend is ready
+  login: async ({ email, password }) => {
+    set({ isLoading: true, error: null });
+    try {
+      await new Promise((r) => setTimeout(r, 400));
 
-          const user = {
-            id: crypto.randomUUID(),
-            firstName,
-            lastName,
-            email,
-            createdAt: new Date().toISOString(),
-          };
+      // Only accept the demo user's credentials for quick UI testing
+      if (email === demoUser.email && password === demoUser.password) {
+        const userSafe = { ...demoUser };
+        delete userSafe.password;
+        set({
+          user: userSafe,
+          isAuthenticated: true,
+          isLoading: false,
+          error: null,
+        });
+        return { success: true, user: userSafe };
+      }
 
-          set({ user, isAuthenticated: true, isLoading: false, error: null });
-          return { success: true };
-        } catch (err) {
-          const message =
-            err?.response?.data?.message ?? "Sign up failed. Please try again.";
-          set({ isLoading: false, error: message });
-          return { success: false, message };
-        }
-      },
+      // Allow any email/password for signUp-created users (handled in signUp)
+      set({ isLoading: false, error: "Incorrect email or password." });
+      return { success: false, message: "Incorrect email or password." };
+    } catch (err) {
+      const message =
+        err?.response?.data?.message ?? "Incorrect email or password.";
+      set({ isLoading: false, error: message });
+      return { success: false, message };
+    }
+  },
 
-      // ── Login ──────────────────────────────────────────────────────────────
-      login: async ({ email, password }) => {
-        set({ isLoading: true, error: null });
-        try {
-          if (!password) {
-            throw new Error("Password is required.");
-          }
+  // ── Logout ─────────────────────────────────────────────────────────────
+  logout: () => set({ user: null, isAuthenticated: false, error: null }),
 
-          await mockNetworkDelay();
-
-          const firstName = email.split("@")[0];
-          const user = {
-            id: crypto.randomUUID(),
-            firstName,
-            lastName: "",
-            email,
-            createdAt: new Date().toISOString(),
-          };
-
-          set({ user, isAuthenticated: true, isLoading: false, error: null });
-          return { success: true };
-        } catch (err) {
-          const message =
-            err?.response?.data?.message ?? "Incorrect email or password.";
-          set({ isLoading: false, error: message });
-          return { success: false, message };
-        }
-      },
-
-      // ── Logout ─────────────────────────────────────────────────────────────
-      logout: () => set({ user: null, isAuthenticated: false, error: null }),
-
-      // ── Helpers ────────────────────────────────────────────────────────────
-      clearError: () => set({ error: null }),
-    }),
-    {
-      name: "vitals-auth", // localStorage key — separate from onboarding store
-      partialize: (s) => ({
-        user: s.user,
-        isAuthenticated: s.isAuthenticated,
-      }),
-    },
-  ),
-);
+  // ── Helpers ────────────────────────────────────────────────────────────
+  clearError: () => set({ error: null }),
+}));
