@@ -1,0 +1,158 @@
+/* ─── DocumentStep.module.css ────────────────────────────────────────────── */
+
+.optionalBadge {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #7a5a00;
+  background: #fff8e1;
+  border: 1px solid rgba(212, 167, 44, 0.3);
+  border-radius: 999px;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+}
+
+/* Drop zone */
+.dropZone {
+  border: 2px dashed #e5e7eb;
+  border-radius: 14px;
+  background: #f9fafb;
+  padding: 36px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.dropZone:hover,
+.dropZoneActive {
+  border-color: #2a4365;
+  background: #eef4fa;
+}
+
+.dropZone:focus-visible {
+  outline: 2px solid #2a4365;
+  outline-offset: 2px;
+}
+
+.dropIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #eef4fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a4365;
+  margin-bottom: 4px;
+}
+
+.dropIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.dropMain {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1f2933;
+  margin: 0;
+}
+
+.dropSub {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+/* Error */
+.errorMsg {
+  font-size: 0.8125rem;
+  color: #c44545;
+  font-weight: 500;
+  margin: -8px 0 12px;
+}
+
+/* File list */
+.fileList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+
+.fileIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #eef4fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a4365;
+  flex-shrink: 0;
+}
+
+.fileMeta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.fileName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileSize {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 6px;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+  flex-shrink: 0;
+}
+
+.removeBtn:hover {
+  color: #8f2f2f;
+  background: #fdecec;
+}

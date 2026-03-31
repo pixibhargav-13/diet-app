@@ -1,0 +1,149 @@
+.page {
+  min-height: 100vh;
+  background-color: #eef4fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  padding: 40px 40px 36px;
+  width: 100%;
+  max-width: 440px;
+  box-sizing: border-box;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.logoLink {
+  display: inline-flex;
+  align-items: center;
+  color: #6b7280;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.15s ease;
+}
+
+.logoLink:hover {
+  color: #2a4365;
+}
+
+.backIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.heading {
+  font-size: 1.625rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #111827;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+.subtext {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.passwordBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.forgotRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.demoResetLink {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #2a4365;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.forgotLink {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a6fa5;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.demoResetLink:hover,
+.forgotLink:hover {
+  color: #2a4365;
+}
+
+.submitBtn {
+  width: 100%;
+  border-radius: 10px;
+  background-color: #2a4365;
+  padding: 13px 20px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  margin-top: 4px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background-color: #4a6fa5;
+}
+
+.submitBtn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.footerLink {
+  color: #2a4365;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footerLink:hover {
+  color: #4a6fa5;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 32px 24px 28px;
+    border-radius: 16px;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,160 @@
+/* ─── HealthProfileStep.module.css ───────────────────────────────────────── */
+
+.sectionLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1f2933;
+  margin: 0 0 14px;
+  letter-spacing: 0.01em;
+}
+
+.required { color: #c44545; }
+
+/* Condition cards grid — like Faire reference */
+.conditionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.conditionCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Only fire hover on cards that are NOT selected */
+.conditionCard:not(.conditionSelected):hover {
+  border-color: #7faad6;
+  background: #f7fbff;
+}
+
+.conditionSelected {
+  border-color: #2a4365;
+  background: #eef4fa;
+  box-shadow: 0 0 0 1px #2a4365;
+}
+
+/* Darken slightly on hover when already selected — keeps it feeling interactive */
+.conditionSelected:hover {
+  background: #dce8f5;
+  border-color: #1f3554;
+  box-shadow: 0 0 0 1px #1f3554;
+}
+
+.conditionIcon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.conditionLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+  line-height: 1.3;
+}
+
+/* Tick in top-right corner */
+.tick {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2a4365;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.tickVisible { opacity: 1; }
+
+/* Allergy text field */
+.allergyField {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+}
+
+.textInput {
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  padding: 11px 14px;
+  font-size: 0.9375rem;
+  color: #1f2933;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.textInput:focus {
+  border-color: #2a4365;
+  box-shadow: 0 0 0 3px rgba(42, 67, 101, 0.1);
+}
+
+/* Dietary preference chips — like Care.com pill tags */
+.dietRow {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dietChip {
+  border-radius: 999px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  padding: 9px 22px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1f2933;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+/* Only fire hover on unselected chips */
+.dietChip:not(.dietChipSelected):hover {
+  border-color: #2a4365;
+  background: #dbe7f5;
+  color: #13243b;
+}
+
+.dietChipSelected {
+  border-color: #2a4365;
+  background: #2a4365;
+  color: #ffffff;
+}
+
+/* Selected hover — darkens slightly, never reverts to unselected style */
+.dietChipSelected:hover,
+.dietChipSelected:focus-visible {
+  border-color: #1f3554;
+  background: #1f3554;
+  color: #ffffff;
+}
+
+@media (max-width: 520px) {
+  .conditionGrid { grid-template-columns: 1fr 1fr; }
+}
