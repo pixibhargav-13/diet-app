@@ -1,4 +1,3 @@
-// Reusable controlled input field with label + error message
 import PropTypes from 'prop-types'
 import styles from './FormField.module.css'
 

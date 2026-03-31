@@ -15,12 +15,10 @@ export default function SignUpPage() {
   const navigate = useNavigate();
   const { signUp, isLoading, isAuthenticated, clearError } = useAuthStore();
 
-  // Already logged in — send straight to onboarding or dashboard
   useEffect(() => {
     if (isAuthenticated) navigate("/onboarding", { replace: true });
   }, [isAuthenticated, navigate]);
 
-  // Clear any stale store error on mount
   useEffect(() => {
     clearError();
   }, [clearError]);
@@ -40,7 +38,6 @@ export default function SignUpPage() {
       return;
     }
 
-    // Surface specific API errors as toasts
     if (result.message?.toLowerCase().includes("email")) {
       toastEmailTaken();
     } else {
@@ -51,7 +48,6 @@ export default function SignUpPage() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        {/* Header */}
         <div className={styles.header}>
           <Link to="/" className={styles.logoLink} aria-label="Back to home">
             <svg
@@ -72,7 +68,6 @@ export default function SignUpPage() {
           </p>
         </div>
 
-        {/* Form */}
         <form
           onSubmit={handleSubmit(onSubmit)}
           noValidate
@@ -136,7 +131,6 @@ export default function SignUpPage() {
             error={errors.password}
           />
 
-          {/* Terms */}
           <div className={styles.checkRow}>
             <input
               id="terms"

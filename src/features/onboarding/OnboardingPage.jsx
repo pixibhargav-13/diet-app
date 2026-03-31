@@ -39,7 +39,7 @@ export default function OnboardingPage() {
     <div className={styles.page}>
       <div className={styles.card}>
         <div className={styles.logoRow}>
-          <span className={styles.logo}>Vitals</span>
+          <span className={styles.logo}>App</span>
           <span className={styles.stepCount}>Step {currentStep} of 4</span>
         </div>
         <StepIndicator current={currentStep} />

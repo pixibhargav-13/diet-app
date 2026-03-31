@@ -1,4 +1,3 @@
-// Password input with show/hide toggle — built separately so it can be reused on login too
 import { useState } from 'react'
 import PropTypes from 'prop-types'
 import styles from './PasswordField.module.css'

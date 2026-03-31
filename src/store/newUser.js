@@ -4,10 +4,8 @@ export const demoUser = {
   firstName: "Demo",
   lastName: "User",
   email: "demo@example.com",
-  // Plaintext here only for quick UI testing — remove in production
-  // Plaintext here only for quick UI testing — remove in production
-  // NOSONAR: intentionally hard-coded demo credential for local UI tests
   password: "password", // NOSONAR
+  resetPasswordLink: "/reset-password?token=demo-reset-token",
   createdAt: new Date().toISOString(),
 };
 

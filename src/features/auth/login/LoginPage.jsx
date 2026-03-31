@@ -1,4 +1,3 @@
-// Login page — reuses FormField + PasswordField from SignUp, same auth store
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -41,7 +40,6 @@ export default function LoginPage() {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        {/* Header */}
         <div className={styles.header}>
           <Link to="/" className={styles.logoLink} aria-label="Back to home">
             <svg
@@ -62,7 +60,6 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Form */}
         <form
           onSubmit={handleSubmit(onSubmit)}
           noValidate
@@ -96,7 +93,6 @@ export default function LoginPage() {
               })}
               error={errors.password}
             />
-            {/* Forgot password — sits below the field, right-aligned */}
             <div className={styles.forgotRow}>
               <Link to="/forgot-password" className={styles.forgotLink}>
                 Forgot password?
