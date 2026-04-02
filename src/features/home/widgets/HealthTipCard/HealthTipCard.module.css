@@ -1,0 +1,123 @@
+/* ─── HealthTipCard.module.css ───────────────────────────────────────────── */
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconWrap {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a4365;
+  flex-shrink: 0;
+}
+
+.iconWrap svg {
+  width: 20px;
+  height: 20px;
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Tip highlight box */
+.tipBox {
+  background: #eef4fa;
+  border-left: 3px solid #2a4365;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tipTitle {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #2a4365;
+  margin: 0;
+}
+
+.tipText {
+  font-size: 0.8125rem;
+  color: #1f2933;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Focus list */
+.focusLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0;
+}
+
+.focusList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.focusItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.focusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.focusText {
+  font-size: 0.875rem;
+  color: #1f2933;
+  line-height: 1.55;
+}
+
+.exploreBtn {
+  width: 100%;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  padding: 9px 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2a4365;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+  margin-top: 2px;
+}
+
+.exploreBtn:hover {
+  background: #eef4fa;
+  border-color: #2a4365;
+}

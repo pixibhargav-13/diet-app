@@ -53,7 +53,6 @@ export default function HealthProfileStep({ onNext }) {
       onNext={handleNext}
       nextDisabled={!canProceed}
     >
-      {/* Conditions */}
       <p className={styles.sectionLabel}>
         Do you have any of these conditions?
       </p>
@@ -93,7 +92,6 @@ export default function HealthProfileStep({ onNext }) {
         })}
       </div>
 
-      {/* Allergy text field — shown if allergies selected */}
       {conditions.includes("allergies") && (
         <div className={styles.allergyField}>
           <label htmlFor="allergy-detail" className={styles.fieldLabel}>
@@ -110,7 +108,6 @@ export default function HealthProfileStep({ onNext }) {
         </div>
       )}
 
-      {/* Dietary preference */}
       <p className={styles.sectionLabel} style={{ marginTop: 28 }}>
         Dietary preference <span className={styles.required}>*</span>
       </p>

@@ -1,4 +1,3 @@
-// Step 3 — BMI inputs + live result with category colour
 import { useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import { useOnboardingStore } from "../../../store/useOnboardingStore";
@@ -62,7 +61,6 @@ export default function BmiStep({ onNext, onBack }) {
       onNext={handleNext}
       nextDisabled={!canProceed}
     >
-      {/* Age + Gender row */}
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="bmi-age" className={styles.label}>
@@ -97,7 +95,6 @@ export default function BmiStep({ onNext, onBack }) {
         </div>
       </div>
 
-      {/* Height + Weight row */}
       <div className={styles.row}>
         <div className={styles.field}>
           <label htmlFor="bmi-height" className={styles.label}>
@@ -131,7 +128,6 @@ export default function BmiStep({ onNext, onBack }) {
         </div>
       </div>
 
-      {/* BMI result card */}
       {Boolean(result && category) && (
         <div
           className={styles.resultCard}
@@ -159,7 +155,6 @@ export default function BmiStep({ onNext, onBack }) {
         </div>
       )}
 
-      {/* BMI scale bar */}
       <div className={styles.scaleWrap}>
         <div className={styles.scaleBar}>
           <div

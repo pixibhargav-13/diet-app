@@ -1,4 +1,3 @@
-// Top progress bar + step label — like the Kajabi reference image
 import PropTypes from "prop-types";
 import styles from "./StepIndicator.module.css";
 
@@ -19,12 +18,10 @@ export default function StepIndicator({ current }) {
 
   return (
     <div className={styles.wrap}>
-      {/* Bar */}
       <div className={styles.barTrack}>
         <div className={styles.barFill} style={{ width: `${progress}%` }} />
       </div>
 
-      {/* Step labels */}
       <ol className={styles.steps} aria-label="Onboarding progress">
         {STEPS.map((s) => {
           let status = "upcoming";

@@ -1,0 +1,137 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.greetingRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2a4365;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.greetingName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.greetingDate {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.topGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.2fr;
+  gap: 16px;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.topGrid > * {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.midGrid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 16px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.midLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.midRight {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .topGrid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .topGrid > :nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .midGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .midRight {
+    flex-direction: row;
+  }
+
+  .midRight > * {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 639px) {
+  .page {
+    gap: 12px;
+  }
+
+  .topGrid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .topGrid > :nth-child(3) {
+    grid-column: auto;
+  }
+
+  .midGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .midRight {
+    flex-direction: column;
+  }
+
+  .topGrid > *,
+  .midLeft > *,
+  .midRight > * {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+  }
+}

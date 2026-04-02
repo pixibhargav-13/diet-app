@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/useAuthStore";
 import { useOnboardingStore } from "../../store/useOnboardingStore";
 import StepIndicator from "./components/StepIndicator";
@@ -11,18 +11,21 @@ import styles from "./OnboardingPage.module.css";
 
 export default function OnboardingPage() {
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuthStore();
-  const { isOnboardingComplete, currentStep, setStep } = useOnboardingStore();
+  const location = useLocation();
+  const { isAuthenticated, user } = useAuthStore();
+  const { currentStep, setStep } = useOnboardingStore();
 
-  // Not logged in — back to sign up
   useEffect(() => {
-    if (!isAuthenticated) navigate("/signup", { replace: true });
-  }, [isAuthenticated, navigate]);
+    if (!isAuthenticated && location.pathname !== "/signup") {
+      navigate("/signup", { replace: true });
+    }
+  }, [isAuthenticated, location.pathname, navigate]);
 
-  // Already completed onboarding — skip to dashboard
   useEffect(() => {
-    if (isOnboardingComplete) navigate("/dashboard", { replace: true });
-  }, [isOnboardingComplete, navigate]);
+    if (user?.onboardingComplete && location.pathname !== "/dashboard") {
+      navigate("/dashboard", { replace: true });
+    }
+  }, [user?.onboardingComplete, location.pathname, navigate]);
 
   const goNext = () => setStep(currentStep + 1);
   const goBack = () => setStep(currentStep - 1);
