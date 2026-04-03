@@ -1,5 +1,10 @@
-function Dashboard() {
-  return <div>Dashboard</div>;
-}
+import DashboardLayout from './DashboardLayout'
+import HomePage from './home/Home'
 
-export default Dashboard;
+export default function Dashboard() {
+  return (
+    <DashboardLayout>
+      <HomePage />
+    </DashboardLayout>
+  )
+}

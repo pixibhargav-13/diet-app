@@ -1,0 +1,99 @@
+/* ─── Dashboard.module.css ───────────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 1100px;
+}
+
+/* Greeting */
+.greeting {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.greetingHeading {
+  font-size: 1.625rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.greetingDate {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Quick stat cards */
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.statCard {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  padding: 20px 22px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0 0 6px;
+}
+
+.statValue {
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.statSub {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin: 3px 0 0;
+}
+
+/* Placeholder */
+.placeholder {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1.5px dashed #e5e7eb;
+  padding: 48px 32px;
+  text-align: center;
+}
+
+.placeholderText {
+  font-size: 0.9375rem;
+  color: #9ca3af;
+  line-height: 1.65;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .statGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .greetingHeading {
+    font-size: 1.375rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .statGrid {
+    grid-template-columns: 1fr;
+  }
+}

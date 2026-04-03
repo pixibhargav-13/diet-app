@@ -8,14 +8,16 @@ import LoginPage from "../../features/auth/login/LoginPage";
 import ForgotPasswordPage from "../../features/auth/forgot-password/ForgotPasswordPage";
 import ResetPasswordPage from "../../features/auth/reset-password/ResetPasswordPage";
 import OnboardingPage from "../../features/onboarding/OnboardingPage";
-import Dashboard from "../../features/dashboard/Dashboard";
+import DashboardLayout from "../../features/dashboard/DashboardLayout";
+import HomePage from "../../features/home/Home";
+import JournalPage from "../../features/journal/Journal";
+import ProgressPage from "../../features/progress/Progress";
+import ConsultPage from "../../features/consult/Consult";
+import ShopPage from "../../features/shop/Shop";
 import NotFound from "../../features/errors/NotFound";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LandingPage />,
-  },
+  { path: "/", element: <LandingPage /> },
 
   {
     path: "/signup",
@@ -63,13 +65,17 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <ProtectedRoute>
-        <Dashboard />
+        <DashboardLayout />
       </ProtectedRoute>
     ),
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "journal", element: <JournalPage /> },
+      { path: "progress", element: <ProgressPage /> },
+      { path: "consult", element: <ConsultPage /> },
+      { path: "shop", element: <ShopPage /> },
+    ],
   },
 
-  {
-    path: "*",
-    element: <NotFound />,
-  },
+  { path: "*", element: <NotFound /> },
 ]);

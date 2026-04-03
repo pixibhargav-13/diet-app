@@ -1,0 +1,136 @@
+/* ─── RecommendedProducts.module.css ─────────────────────────────────────── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #4a6fa5;
+}
+
+.visitLink {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a6fa5;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.visitLink:hover { color: #2a4365; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Card — border-radius on the wrapper clips the image corners too */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  /* overflow:hidden ensures the image doesn't bleed outside the radius on hover */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  /* transition on the card itself — NOT on a child wrapper */
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.11);
+  transform: translateY(-3px);
+  border-color: #d0e4f5;
+}
+
+/* Image fills the card width, no extra wrapper that could break corners */
+.imgWrap {
+  aspect-ratio: 1 / 1;
+  overflow: hidden; /* secondary clip in case aspect-ratio causes bleed */
+  background: #eef4fa;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.card:hover .img { transform: scale(1.05); }
+
+.info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.price {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #2a4365;
+  margin: 0;
+}
+
+.cartBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  padding: 8px 10px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #1f2933;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+.cartBtn:hover {
+  background: #2a4365;
+  border-color: #2a4365;
+  color: #ffffff;
+}
+
+.cartBtn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* Tablet — left col full width, still 3 cols */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Mobile — single column, one product full width */
+@media (max-width: 639px) {
+  .grid { grid-template-columns: 1fr; }
+}

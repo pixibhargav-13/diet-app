@@ -1,7 +1,7 @@
-// Step 4 — optional blood report / prescription upload + finish
 import { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useOnboardingStore } from "../../../store/useOnboardingStore";
+import { useAuthStore } from "../../../store/useAuthStore";
 import StepLayout from "../components/StepLayout";
 import styles from "./DocumentStep.module.css";
 
@@ -11,6 +11,7 @@ const MAX_MB = 10;
 export default function DocumentStep({ onBack, onFinish }) {
   const { documents, addDocument, removeDocument, completeOnboarding } =
     useOnboardingStore();
+  const { markOnboardingComplete } = useAuthStore();
   const inputRef = useRef(null);
   const [dragOver, setDragOver] = useState(false);
   const [error, setError] = useState("");
@@ -44,6 +45,7 @@ export default function DocumentStep({ onBack, onFinish }) {
 
   const handleFinish = () => {
     completeOnboarding();
+    markOnboardingComplete();
     onFinish();
   };
 
@@ -56,12 +58,10 @@ export default function DocumentStep({ onBack, onFinish }) {
       nextLabel="Complete setup"
       isLast
     >
-      {/* Optional badge */}
       <span className={styles.optionalBadge}>
         Optional — you can add these later from your profile
       </span>
 
-      {/* Drop zone */}
       <button
         type="button"
         className={`${styles.dropZone} ${dragOver ? styles.dropZoneActive : ""}`}
@@ -102,10 +102,8 @@ export default function DocumentStep({ onBack, onFinish }) {
         </p>
       </button>
 
-      {/* Error */}
       {error && <p className={styles.errorMsg}>{error}</p>}
 
-      {/* File list */}
       {documents.length > 0 && (
         <ul className={styles.fileList}>
           {documents.map((doc) => (
