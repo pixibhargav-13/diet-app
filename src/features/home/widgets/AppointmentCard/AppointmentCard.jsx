@@ -1,16 +1,44 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./AppointmentCard.module.css";
 
 const MEET_LINK = "meet.google.com/abc-defg-hij";
+const MEET_URL = `https://${MEET_LINK}`;
 
 export default function AppointmentCard() {
   const [copied, setCopied] = useState(false);
+  const resetTimerRef = useRef(null);
 
-  const copy = () => {
-    navigator.clipboard.writeText(`https://${MEET_LINK}`);
+  const copy = useCallback(async () => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(MEET_URL);
+      }
+    } catch {
+      const textarea = document.createElement("textarea");
+      textarea.value = MEET_URL;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "absolute";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textarea);
+    }
+
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+    if (resetTimerRef.current) {
+      clearTimeout(resetTimerRef.current);
+    }
+    resetTimerRef.current = setTimeout(() => setCopied(false), 2000);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) {
+        clearTimeout(resetTimerRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className={styles.card}>
@@ -92,6 +120,7 @@ export default function AppointmentCard() {
             )}
           </button>
         </div>
+        <p className={styles.meetHint}>Copy the link and join 5 minutes early.</p>
       </div>
     </div>
   );

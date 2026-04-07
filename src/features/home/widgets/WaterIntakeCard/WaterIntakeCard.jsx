@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import PropTypes from "prop-types";
 import styles from "./WaterIntakeCard.module.css";
 
 const TOTAL_GLASSES = 6;
 const GLASS_ML = 250;
 const TARGET_GLASSES = 12;
+const GLASS_SLOTS = Array.from({ length: TARGET_GLASSES }, (_, slot) => slot + 1);
 
-function GlassIcon({ filled }) {
+const GlassIcon = memo(function GlassIcon({ filled }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -25,7 +26,7 @@ function GlassIcon({ filled }) {
       />
     </svg>
   );
-}
+});
 
 GlassIcon.propTypes = {
   filled: PropTypes.bool.isRequired,
@@ -37,8 +38,8 @@ export default function WaterIntakeCard() {
   const consumed = (glasses * GLASS_ML) / 1000;
   const target = (TARGET_GLASSES * GLASS_ML) / 1000;
 
-  const add = () => {
-    if (glasses < TARGET_GLASSES) setGlasses((g) => g + 1);
+  const handleAddGlass = () => {
+    setGlasses((current) => Math.min(current + 1, TARGET_GLASSES));
   };
 
   return (
@@ -51,16 +52,14 @@ export default function WaterIntakeCard() {
       </div>
 
       <div className={styles.glassGrid}>
-        {Array.from({ length: TARGET_GLASSES }, (_, slot) => slot + 1).map(
-          (slot) => (
-            <GlassIcon key={slot} filled={slot <= glasses} />
-          ),
-        )}
+        {GLASS_SLOTS.map((slot) => (
+          <GlassIcon key={slot} filled={slot <= glasses} />
+        ))}
       </div>
 
       <button
         type="button"
-        onClick={add}
+        onClick={handleAddGlass}
         className={styles.addBtn}
         disabled={glasses >= TARGET_GLASSES}
       >

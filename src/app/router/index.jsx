@@ -1,29 +1,38 @@
+import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "../router/ProtectedRoute";
 import GuestRoute from "../router/GuestRoute";
 
-import LandingPage from "../../features/landing/pages/LandingPage";
-import SignUpPage from "../../features/auth/signup/SignUpPage";
-import LoginPage from "../../features/auth/login/LoginPage";
-import ForgotPasswordPage from "../../features/auth/forgot-password/ForgotPasswordPage";
-import ResetPasswordPage from "../../features/auth/reset-password/ResetPasswordPage";
-import OnboardingPage from "../../features/onboarding/OnboardingPage";
-import DashboardLayout from "../../features/dashboard/DashboardLayout";
-import HomePage from "../../features/home/Home";
-import JournalPage from "../../features/journal/Journal";
-import ProgressPage from "../../features/progress/Progress";
-import ConsultPage from "../../features/consult/Consult";
-import ShopPage from "../../features/shop/Shop";
-import NotFound from "../../features/errors/NotFound";
+const LandingPage = lazy(() => import("../../features/landing/pages/LandingPage"));
+const SignUpPage = lazy(() => import("../../features/auth/signup/SignUpPage"));
+const LoginPage = lazy(() => import("../../features/auth/login/LoginPage"));
+const ForgotPasswordPage = lazy(() =>
+  import("../../features/auth/forgot-password/ForgotPasswordPage")
+);
+const ResetPasswordPage = lazy(() =>
+  import("../../features/auth/reset-password/ResetPasswordPage")
+);
+const OnboardingPage = lazy(() => import("../../features/onboarding/OnboardingPage"));
+const DashboardLayout = lazy(() => import("../../features/dashboard/DashboardLayout"));
+const HomePage = lazy(() => import("../../features/home/Home"));
+const JournalPage = lazy(() => import("../../features/journal/Journal"));
+const ProgressPage = lazy(() => import("../../features/progress/ProgressPage"));
+const ConsultPage = lazy(() => import("../../features/consult/Consult"));
+const ShopPage = lazy(() => import("../../features/shop/Shop"));
+const NotFound = lazy(() => import("../../features/errors/NotFound"));
+
+function withSuspense(element) {
+  return <Suspense fallback={null}>{element}</Suspense>;
+}
 
 export const router = createBrowserRouter([
-  { path: "/", element: <LandingPage /> },
+  { path: "/", element: withSuspense(<LandingPage />) },
 
   {
     path: "/signup",
     element: (
       <GuestRoute>
-        <SignUpPage />
+        {withSuspense(<SignUpPage />)}
       </GuestRoute>
     ),
   },
@@ -31,7 +40,7 @@ export const router = createBrowserRouter([
     path: "/login",
     element: (
       <GuestRoute>
-        <LoginPage />
+        {withSuspense(<LoginPage />)}
       </GuestRoute>
     ),
   },
@@ -39,7 +48,7 @@ export const router = createBrowserRouter([
     path: "/forgot-password",
     element: (
       <GuestRoute>
-        <ForgotPasswordPage />
+        {withSuspense(<ForgotPasswordPage />)}
       </GuestRoute>
     ),
   },
@@ -47,7 +56,7 @@ export const router = createBrowserRouter([
     path: "/reset-password",
     element: (
       <GuestRoute>
-        <ResetPasswordPage />
+        {withSuspense(<ResetPasswordPage />)}
       </GuestRoute>
     ),
   },
@@ -56,7 +65,7 @@ export const router = createBrowserRouter([
     path: "/onboarding",
     element: (
       <ProtectedRoute requireOnboarding={false}>
-        <OnboardingPage />
+        {withSuspense(<OnboardingPage />)}
       </ProtectedRoute>
     ),
   },
@@ -65,17 +74,17 @@ export const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <ProtectedRoute>
-        <DashboardLayout />
+        {withSuspense(<DashboardLayout />)}
       </ProtectedRoute>
     ),
     children: [
-      { index: true, element: <HomePage /> },
-      { path: "journal", element: <JournalPage /> },
-      { path: "progress", element: <ProgressPage /> },
-      { path: "consult", element: <ConsultPage /> },
-      { path: "shop", element: <ShopPage /> },
+      { index: true, element: withSuspense(<HomePage />) },
+      { path: "journal", element: withSuspense(<JournalPage />) },
+      { path: "progress", element: withSuspense(<ProgressPage />) },
+      { path: "consult", element: withSuspense(<ConsultPage />) },
+      { path: "shop", element: withSuspense(<ShopPage />) },
     ],
   },
 
-  { path: "*", element: <NotFound /> },
+  { path: "*", element: withSuspense(<NotFound />) },
 ]);

@@ -1,46 +1,50 @@
-// Login page — after login, ProtectedRoute handles routing based on onboardingComplete
-import { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import { useAuthStore } from '../../../store/useAuthStore'
-import { toastLoginSuccess, toastLoginError } from '../../../utils/Toast'
-import FormField from '../useForm/FormField'
-import PasswordField from '../useForm/PasswordField'
-import styles from './LoginPage.module.css'
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { useAuthStore } from "../../../store/useAuthStore";
+import { toastLoginSuccess, toastLoginError } from "../../../utils/Toast";
+import FormField from "../useForm/FormField";
+import PasswordField from "../useForm/PasswordField";
+import styles from "./LoginPage.module.css";
 
 export default function LoginPage() {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const { login, isLoading, isAuthenticated, user, clearError } = useAuthStore()
-
-  // Redirect destination preserved from ProtectedRoute
-  const from = location.state?.from?.pathname || '/dashboard'
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      // If they have a preserved destination and onboarding is done, use it
-      // Otherwise ProtectedRoute will handle the redirect automatically
-      navigate(user?.onboardingComplete ? from : '/onboarding', { replace: true })
-    }
-  }, [isAuthenticated, user, from, navigate])
-
-  useEffect(() => { clearError() }, [clearError])
+  const login = useAuthStore((state) => state.login);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm({ mode: 'onTouched' })
+    clearErrors,
+    setError,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    mode: "onTouched",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   const onSubmit = async (data) => {
-    const result = await login(data)
-    if (result.success) {
-      toastLoginSuccess(result.user?.firstName)
-      // Navigation handled by useEffect above
-    } else {
-      toastLoginError()
+    clearErrors("root");
+
+    try {
+      const result = await login(data);
+
+      if (!result?.success) {
+        const message = result?.message || "Incorrect email or password.";
+        setError("root", { type: "server", message });
+        toastLoginError();
+        return;
+      }
+
+      toastLoginSuccess(result.user?.firstName);
+    } catch {
+      setError("root", {
+        type: "server",
+        message: "Unable to sign in right now. Please try again.",
+      });
+      toastLoginError();
     }
-  }
+  };
 
   return (
     <div className={styles.page}>
@@ -56,6 +60,10 @@ export default function LoginPage() {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.form}>
+          {errors.root?.message ? (
+            <p role="alert">{errors.root.message}</p>
+          ) : null}
+
           <FormField
             id="email"
             label="Email address"
@@ -86,8 +94,8 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <button type="submit" disabled={isLoading} className={styles.submitBtn}>
-            {isLoading ? 'Signing in…' : 'Sign in'}
+          <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
+            {isSubmitting ? 'Signing in…' : 'Sign in'}
           </button>
         </form>
 

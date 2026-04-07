@@ -96,9 +96,11 @@ const NAV = [
 export default function Sidebar({ onClose }) {
   const navigate = useNavigate();
   const { logout } = useAuthStore();
+  const isDismissible = typeof onClose === "function";
 
   const handleLogout = () => {
     logout();
+    onClose?.();
     navigate("/login", { replace: true });
   };
 
@@ -107,6 +109,26 @@ export default function Sidebar({ onClose }) {
       {/* Logo */}
       <div className={styles.logoRow}>
         <span className={styles.logo}>Vitals</span>
+        {isDismissible ? (
+          <button
+            type="button"
+            onClick={onClose}
+            className={styles.closeBtn}
+            aria-label="Close sidebar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        ) : null}
       </div>
 
       {/* Nav */}
