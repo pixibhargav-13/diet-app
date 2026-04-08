@@ -29,7 +29,7 @@ const GroceryListPage = lazy(() =>
     import("../../features/journal/pages/GroceryListPage")
 );
 const ProgressPage = lazy(() => import("../../features/progress/ProgressPage"));
-const ConsultPage = lazy(() => import("../../features/consult/Consult"));
+const ConsultPage = lazy(() => import("../../features/consult/ConsultPage"));
 const ShopPage = lazy(() => import("../../features/shop/Shop"));
 const NotFound = lazy(() => import("../../features/errors/NotFound"));
 

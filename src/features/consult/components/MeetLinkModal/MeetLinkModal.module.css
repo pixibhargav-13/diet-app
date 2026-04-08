@@ -1,0 +1,207 @@
+/* MeetLinkModal.module.css */
+.sessionInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dietitianName {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.sessionTime {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    margin: 0;
+}
+
+.statusBadge {
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #f0fdf4;
+    color: var(--color-success);
+    border: 1px solid #bbf7d0;
+    border-radius: 999px;
+    padding: 3px 10px;
+    flex-shrink: 0;
+}
+
+.countdownSection {
+    background: var(--color-bg);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.countdownTitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    margin: 0;
+}
+
+.countdown {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.countdownChip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-primary);
+    border-radius: 8px;
+    padding: 8px 14px;
+    min-width: 52px;
+}
+
+.countdownNum {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.countdownLbl {
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.countdownSep {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+
+.countdownDone {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+}
+
+.meetCard {
+    background: #f9fafb;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.meetCardTop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.videoIcon {
+    color: var(--color-secondary);
+    flex-shrink: 0;
+}
+
+.meetTitle {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.linkRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.linkText {
+    flex: 1;
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.copyBtn {
+    background: var(--color-bg);
+    border: none;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s ease;
+}
+
+.copyBtn:hover {
+    background: #dce8f5;
+}
+
+.openBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 11px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    transition: background 0.15s ease;
+}
+
+.openBtn:hover {
+    background: var(--color-secondary);
+}
+
+.whatsappNote {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+}
+
+.waIcon {
+    color: var(--color-success);
+    flex-shrink: 0;
+}
+
+.copyBtn:focus-visible,
+.openBtn:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}

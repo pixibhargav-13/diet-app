@@ -1,0 +1,133 @@
+/* PreConsultModal.module.css */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.optional {
+    font-weight: 400;
+    color: var(--color-muted);
+    font-size: 0.8125rem;
+}
+
+.textarea {
+    border-radius: 10px;
+    border: 1.5px solid var(--color-border);
+    background: #f9fafb;
+    padding: 10px 14px;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
+}
+
+.textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(42, 67, 101, 0.08);
+    background: #fff;
+}
+
+.dropZone {
+    border: 2px dashed var(--color-border);
+    border-radius: 12px;
+    background: #f9fafb;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropZone:hover {
+    border-color: var(--color-primary);
+    background: var(--color-bg);
+}
+
+.dropIcon {
+    color: var(--color-muted);
+}
+
+.dropText {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    margin: 0;
+}
+
+.hiddenInput {
+    display: none;
+}
+
+.fileList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.fileItem {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.8125rem;
+    color: var(--color-text);
+    background: #f3f4f6;
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
+.removeFile {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-muted);
+    margin-left: auto;
+    font-size: 0.875rem;
+}
+
+.removeFile:hover {
+    color: var(--color-danger);
+}
+
+.submitBtn {
+    width: 100%;
+    border-radius: 10px;
+    background: var(--color-primary);
+    border: none;
+    padding: 13px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+    background: var(--color-secondary);
+}
+
+.submitBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.dropZone:focus-visible,
+.removeFile:focus-visible,
+.submitBtn:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}

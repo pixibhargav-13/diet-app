@@ -139,3 +139,29 @@
   outline: 2px solid rgba(255, 255, 255, 0.45);
   outline-offset: 2px;
 }
+
+.scheduleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  padding: 8px 12px;
+  font-size: clamp(0.82rem, 1.1vw, 0.9rem);
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.scheduleBtn:hover {
+  background: rgba(0, 0, 0, 0.38);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.scheduleBtn:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 2px;
+}

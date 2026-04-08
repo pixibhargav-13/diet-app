@@ -1,0 +1,108 @@
+/* ─── ModalShell.module.css ──────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+.modal {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90dvh;
+  overflow-y: auto;
+  animation: slideUp 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.wide {
+  max-width: 720px;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(16px);
+    opacity: 0
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 22px 0;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.closeBtn {
+  background: #f3f4f6;
+  border: none;
+  cursor: pointer;
+  color: var(--color-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.closeBtn:hover {
+  background: #e5e7eb;
+  color: var(--color-text);
+}
+
+.closeBtn:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.body {
+  padding: 18px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .overlay,
+  .modal {
+    animation: none;
+  }
+}
