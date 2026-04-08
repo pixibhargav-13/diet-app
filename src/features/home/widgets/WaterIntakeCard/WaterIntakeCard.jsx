@@ -1,11 +1,9 @@
-import { memo, useState } from "react";
+import { memo, useMemo } from "react";
 import PropTypes from "prop-types";
+import { useHydrationStore } from "../../../../store/useHydrationStore";
 import styles from "./WaterIntakeCard.module.css";
 
-const TOTAL_GLASSES = 6;
 const GLASS_ML = 250;
-const TARGET_GLASSES = 12;
-const GLASS_SLOTS = Array.from({ length: TARGET_GLASSES }, (_, slot) => slot + 1);
 
 const GlassIcon = memo(function GlassIcon({ filled }) {
   return (
@@ -33,13 +31,24 @@ GlassIcon.propTypes = {
 };
 
 export default function WaterIntakeCard() {
-  const [glasses, setGlasses] = useState(TOTAL_GLASSES);
+  const entries = useHydrationStore((state) => state.entries);
+  const goalMl = useHydrationStore((state) => state.goalMl);
+  const addEntry = useHydrationStore((state) => state.addEntry);
 
-  const consumed = (glasses * GLASS_ML) / 1000;
-  const target = (TARGET_GLASSES * GLASS_ML) / 1000;
+  const consumedMl = useMemo(
+    () => entries.reduce((sum, entry) => sum + entry.ml, 0),
+    [entries]
+  );
+
+  const targetGlasses = Math.max(1, Math.ceil(goalMl / GLASS_ML));
+  const glasses = Math.min(targetGlasses, Math.floor(consumedMl / GLASS_ML));
+  const glassSlots = Array.from({ length: targetGlasses }, (_, slot) => slot + 1);
+
+  const consumed = consumedMl / 1000;
+  const target = goalMl / 1000;
 
   const handleAddGlass = () => {
-    setGlasses((current) => Math.min(current + 1, TARGET_GLASSES));
+    addEntry(GLASS_ML, "Water Bottle");
   };
 
   return (
@@ -52,7 +61,7 @@ export default function WaterIntakeCard() {
       </div>
 
       <div className={styles.glassGrid}>
-        {GLASS_SLOTS.map((slot) => (
+        {glassSlots.map((slot) => (
           <GlassIcon key={slot} filled={slot <= glasses} />
         ))}
       </div>
@@ -61,7 +70,7 @@ export default function WaterIntakeCard() {
         type="button"
         onClick={handleAddGlass}
         className={styles.addBtn}
-        disabled={glasses >= TARGET_GLASSES}
+        disabled={consumedMl >= goalMl}
       >
         + Add 250ml Glass
       </button>

@@ -4,7 +4,7 @@ import { RouterProvider } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import { QueryProvider } from "./app/providers/QueryProvider.jsx";
-import { router } from "./app/router";
+import { router } from "./app/router/router.js";
 import "./index.css";
 
 createRoot(document.getElementById("root")).render(

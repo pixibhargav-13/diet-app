@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from "./CaloriesCard.module.css";
 
 const R = 52;
@@ -23,10 +24,11 @@ export default function CaloriesCard({ consumed = 1300, goal = 2000, onQuickLog 
   const pct = Math.min((consumed / safeGoal) * 100, 100);
   const dash = (pct / 100) * CIRC;
   const status = getStatus(consumed, goal);
+  const statusToken = `${status[0].toUpperCase()}${status.slice(1)}`;
 
-  const badgeClassName = `${styles.badge} ${styles[`badge${status[0].toUpperCase()}${status.slice(1)}`]}`;
-  const ringClassName = `${styles.progressRing} ${styles[`ring${status[0].toUpperCase()}${status.slice(1)}`]}`;
-  const valueClassName = `${styles.donutValue} ${styles[`value${status[0].toUpperCase()}${status.slice(1)}`]}`;
+  const badgeClassName = `${styles.badge} ${styles[`badge${statusToken}`]}`;
+  const ringClassName = `${styles.progressRing} ${styles[`ring${statusToken}`]}`;
+  const valueClassName = `${styles.donutValue} ${styles[`value${statusToken}`]}`;
 
   return (
     <div className={styles.card}>
@@ -70,7 +72,7 @@ export default function CaloriesCard({ consumed = 1300, goal = 2000, onQuickLog 
         </svg>
         <div className={styles.donutCenter}>
           <span className={valueClassName}>{consumed.toLocaleString()}</span>
-          <span className={styles.donutSub}>/ {goal.toLocaleString()} kcal</span>
+          <span className={styles.donutSub}>/ {Math.max(0, goal).toLocaleString()} kcal</span>
         </div>
       </div>
 
@@ -94,3 +96,9 @@ export default function CaloriesCard({ consumed = 1300, goal = 2000, onQuickLog 
     </div>
   );
 }
+
+CaloriesCard.propTypes = {
+  consumed: PropTypes.number,
+  goal: PropTypes.number,
+  onQuickLog: PropTypes.func,
+};
