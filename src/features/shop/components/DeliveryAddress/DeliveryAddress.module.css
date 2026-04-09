@@ -1,0 +1,111 @@
+/* ─── DeliveryAddress.module.css ─────────────────────────────────────────── */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4b5563;
+}
+
+.changeBtn {
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #4b5563;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.changeBtn:hover {
+  color: #2a4365;
+}
+
+/* Address card */
+.addressCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 16px 18px;
+}
+
+.emptyAddress {
+  background: #f9fafb;
+  border: 1px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.pinWrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #eef4fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pinIcon {
+  width: 16px;
+  height: 16px;
+  color: #2a4365;
+}
+
+.addressInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.addressLabel {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.addressLine {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.phoneRow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.phoneIcon {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.phone {
+  font-size: 0.8125rem;
+  color: #6b7280;
+}

@@ -1,0 +1,81 @@
+/* ─── RecentFavourites.module.css ────────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.viewAll {
+  background: none;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a6fa5;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease;
+}
+
+.viewAll:hover {
+  color: #2a4365;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chipItem {
+  margin: 0;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.chip:hover {
+  border-color: #2a4365;
+  background: #eef4fa;
+}
+
+.plus {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #9ca3af;
+  line-height: 1;
+}
+
+.chipName {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+}

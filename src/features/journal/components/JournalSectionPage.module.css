@@ -1,0 +1,72 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8125rem;
+    color: #6b7280;
+}
+
+.breadcrumbLink {
+    color: #4a6fa5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.breadcrumbLink:hover {
+    color: #2a4365;
+}
+
+.separator {
+    color: #9ca3af;
+}
+
+.crumbMuted {
+    color: #6b7280;
+}
+
+.crumbCurrent {
+    color: #1f2933;
+    font-weight: 700;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.title {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #111827;
+    font-weight: 800;
+}
+
+.description {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #6b7280;
+    max-width: 68ch;
+}
+
+.bodyCard {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #ffffff;
+    padding: 20px 22px;
+}
+
+.bodyHint {
+    margin: 0;
+    color: #4b5563;
+    font-size: 0.9375rem;
+}

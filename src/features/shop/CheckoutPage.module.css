@@ -1,0 +1,261 @@
+/* ─── CheckoutPage.module.css ────────────────────────────────────────────── */
+
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: 24px;
+}
+
+.heading {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #111827;
+    letter-spacing: -0.025em;
+    margin: 0 0 5px;
+}
+
+.subtext {
+    font-size: 0.9375rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 20px;
+    align-items: start;
+}
+
+.leftCol {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 22px 24px;
+}
+
+.cardSectionLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4b5563;
+    margin: 0 0 4px;
+}
+
+.itemList {
+    display: flex;
+    flex-direction: column;
+}
+
+.emptyMsg {
+    font-size: 0.9375rem;
+    color: #9ca3af;
+    margin: 16px 0;
+    text-align: center;
+}
+
+.addressForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.addressInput {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    padding: 10px 12px;
+    font-size: 0.875rem;
+    color: #111827;
+}
+
+.addressInput:focus {
+    outline: none;
+    border-color: #2a4365;
+    box-shadow: 0 0 0 2px rgba(42, 67, 101, 0.12);
+}
+
+.addressActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.addressError {
+    margin: 0;
+    font-size: 0.8125rem;
+    color: #dc2626;
+}
+
+.emptyStateCard {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.emptyStateTitle {
+    margin: 0;
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.emptyStateText {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.rightCol {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: sticky;
+    top: 24px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.primaryBtn {
+    border: none;
+    background: #2a4365;
+    color: #ffffff;
+    transition: background 0.15s ease;
+}
+
+.primaryBtn:hover:not(:disabled) {
+    background: #4a6fa5;
+}
+
+.primaryBtn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.secondaryBtn {
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #374151;
+}
+
+.secondaryBtn:hover {
+    background: #f9fafb;
+}
+
+.confirmationWrap {
+    display: grid;
+    place-items: center;
+    min-height: 60vh;
+}
+
+.confirmationCard {
+    width: min(100%, 620px);
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.confirmationEyebrow {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4a6fa5;
+}
+
+.confirmationTitle {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #111827;
+}
+
+.confirmationText {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.confirmationAddress {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    color: #374151;
+    font-size: 0.875rem;
+}
+
+.confirmationAddressLabel {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b7280;
+    font-weight: 700;
+}
+
+@media (max-width: 860px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .rightCol {
+        position: static;
+    }
+}
+
+@media (max-width: 540px) {
+    .heading {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        padding: 18px 16px;
+    }
+
+    .addressActions {
+        flex-direction: column;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+    }
+}

@@ -1,0 +1,295 @@
+/* ─── BookingModal.module.css ────────────────────────────────────────────── */
+.typeToggle {
+    display: flex;
+    background: #f3f4f6;
+    border-radius: 10px;
+    padding: 3px;
+    gap: 2px;
+    width: fit-content;
+}
+
+.typeBtn {
+    border: none;
+    background: none;
+    border-radius: 8px;
+    padding: 7px 18px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.typeBtnActive {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.typeBtnEmerg {
+    background: var(--color-danger);
+    color: #fff;
+}
+
+.cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .cols {
+        grid-template-columns: 1fr;
+    }
+}
+
+.sectionLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0 0 10px;
+}
+
+/* Mini calendar */
+.calendar {
+    background: #f9fafb;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    padding: 14px;
+}
+
+.calNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.calNavBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.125rem;
+    color: var(--color-muted);
+    padding: 2px 6px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+}
+
+.calNavBtn:hover {
+    background: var(--color-border);
+}
+
+.calMonth {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.calGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+}
+
+.calDayName {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--color-muted);
+    text-align: center;
+    padding: 2px 0 6px;
+}
+
+.calDay {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    background: none;
+}
+
+.calEmpty {
+    background: transparent !important;
+    pointer-events: none;
+}
+
+.calPast {
+    color: #7b8391;
+    background: none;
+    cursor: not-allowed;
+}
+
+.calAvail {
+    background: var(--color-bg);
+    color: var(--color-primary);
+}
+
+.calAvail:hover {
+    background: #dce8f5;
+}
+
+.calSelected {
+    background: var(--color-primary) !important;
+    color: #fff !important;
+}
+
+/* Slots */
+.slotGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.slot {
+    border-radius: 8px;
+    border: 1.5px solid var(--color-border);
+    background: #fff;
+    padding: 8px 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.slotAvail {
+    color: var(--color-primary);
+    background: var(--color-bg);
+    border-color: #d0e4f5;
+}
+
+.slotAvail:hover {
+    background: #dce8f5;
+}
+
+.slotUnavail {
+    color: var(--color-muted);
+    background: #f9fafb;
+    cursor: not-allowed;
+}
+
+.slotSelected {
+    background: var(--color-primary) !important;
+    color: #fff !important;
+    border-color: var(--color-primary) !important;
+}
+
+.packageBanner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f0fdf4;
+    border-radius: 8px;
+    border: 1px solid #bbf7d0;
+    padding: 8px 12px;
+    font-size: 0.8125rem;
+    color: var(--color-success);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.pkgIcon {
+    flex-shrink: 0;
+}
+
+.infoBanner {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    background: #fff8e1;
+    border-radius: 8px;
+    border: 1px solid #fde68a;
+    padding: 8px 12px;
+    font-size: 0.8125rem;
+    color: #5f4700;
+}
+
+.confirmBtn {
+    width: 100%;
+    border-radius: 10px;
+    background: var(--color-primary);
+    border: none;
+    padding: 13px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.confirmBtn:hover:not(:disabled) {
+    background: var(--color-secondary);
+}
+
+.confirmBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Success */
+.successWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    padding: 16px 0;
+}
+
+.successIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #f0fdf4;
+    border: 2px solid #bbf7d0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-success);
+}
+
+.successTitle {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.successSub {
+    font-size: 0.9375rem;
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 30ch;
+}
+
+.doneBtn {
+    border-radius: 10px;
+    background: var(--color-primary);
+    border: none;
+    padding: 11px 32px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    margin-top: 8px;
+}
+
+.doneBtn:hover {
+    background: var(--color-secondary);
+}
+
+.typeBtn:focus-visible,
+.calNavBtn:focus-visible,
+.calDay:focus-visible,
+.slot:focus-visible,
+.confirmBtn:focus-visible,
+.doneBtn:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}

@@ -1,0 +1,82 @@
+/* ─── MealContribution.module.css ───────────────────────────────────────── */
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.row:hover {
+  background: #eef4fa;
+  border-color: #d0e4f5;
+}
+
+/* Icon */
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #4a6fa5;
+}
+
+.iconSvg svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Info */
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mealType {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.ingredients {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right — kcal + % */
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.kcal {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.pct {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #4a7c59;
+}

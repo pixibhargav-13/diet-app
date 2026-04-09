@@ -1,0 +1,154 @@
+/* ─── MealPhotoUpload.module.css ─────────────────────────────────────────── */
+
+.wrap {
+  background: #2a4365;
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 1fr);
+  align-items: stretch;
+  gap: 22px;
+  min-height: 180px;
+  box-sizing: border-box;
+}
+
+/* Info — left side */
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.heading {
+  font-size: 1.375rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.desc {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.attachBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #4a7c59;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 20px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.15s ease;
+}
+
+.attachBtn:hover {
+  background: #3a6349;
+}
+
+.error {
+  font-size: 0.8125rem;
+  color: #fca5a5;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Drop zone — right side */
+.dropZone {
+  width: 100%;
+  min-height: 146px;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.dropZone:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.active {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.hiddenInput {
+  display: none;
+}
+
+/* Placeholder icon */
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholderIcon {
+  width: 52px;
+  height: 52px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Preview */
+.previewWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.previewImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.removeBtn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.removeBtn:hover {
+  background: rgba(196, 69, 69, 0.85);
+}
+
+/* Mobile — stack vertically */
+@media (max-width: 600px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .dropZone {
+    width: 100%;
+    height: 160px;
+  }
+}

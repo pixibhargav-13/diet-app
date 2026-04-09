@@ -1,0 +1,205 @@
+/* ─── WeeklyDietPlan.module.css ──────────────────────────────────────────── */
+
+.section {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 10px rgba(17, 24, 39, 0.04);
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badge {
+  display: inline-flex;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #4a7c59;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 999px;
+  padding: 3px 10px;
+  width: fit-content;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.subtitle {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.groceryLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #4a6fa5;
+  text-decoration: none;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.groceryLink:hover { border-color: #2a4365; color: #2a4365; }
+
+/* Day tabs */
+.dayTabs {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+.dayTabs::-webkit-scrollbar { display: none; }
+
+.dayTab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  background: #f9fafb;
+  cursor: pointer;
+  flex-shrink: 0;
+  min-width: 52px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.dayTab:hover { background: #eef4fa; border-color: #d0e4f5; }
+
+.dayTabActive {
+  background: #2a4365;
+  border-color: #2a4365;
+}
+
+.dayTabActive .dayName,
+.dayTabActive .dayNum {
+  color: #ffffff;
+}
+
+.dayName {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.dayNum {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1;
+}
+
+/* Today indicator dot */
+.todayDot {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #4a7c59;
+}
+
+.dayTabActive .todayDot { background: rgba(255, 255, 255, 0.7); }
+
+/* Day summary strip */
+.daySummary {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #f3f4f6;
+  overflow: hidden;
+}
+
+.summaryItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 8px;
+}
+
+.summaryLabel {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.summaryValue {
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.summaryDivider {
+  width: 1px;
+  height: 28px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+}
+
+/* Meal cards — 2-col grid on desktop */
+.mealGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+/* Tablet — single column cards */
+@media (max-width: 860px) {
+  .mealGrid { grid-template-columns: 1fr; }
+}
+
+/* Mobile */
+@media (max-width: 540px) {
+  .section { padding: 18px 16px; gap: 14px; }
+  .dayTab  { padding: 8px 10px; min-width: 44px; }
+  .daySummary { flex-wrap: wrap; }
+  .summaryItem { min-width: 30%; }
+  .summaryDivider:nth-child(4) { display: none; }
+}

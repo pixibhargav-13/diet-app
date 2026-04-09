@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./RecommendedProducts.module.css";
 import product1 from "../../../../assets/products/product-1.webp";
 import product2 from "../../../../assets/products/product-2.webp";
@@ -31,9 +32,9 @@ export default function RecommendedProducts() {
     <div className={styles.section}>
       <div className={styles.header}>
         <span className={styles.title}>Recommended Products</span>
-        <a href="/dashboard/shop" className={styles.visitLink}>
+        <Link to="/dashboard/shop" className={styles.visitLink}>
           Visit Shop
-        </a>
+        </Link>
       </div>
 
       <div className={styles.grid}>

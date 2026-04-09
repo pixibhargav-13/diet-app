@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { memo, useMemo } from "react";
 import PropTypes from "prop-types";
+import { useHydrationStore } from "../../../../store/useHydrationStore";
+import useHydrationDaySync from "../../../../hooks/useHydrationDaySync";
 import styles from "./WaterIntakeCard.module.css";
 
-const TOTAL_GLASSES = 6;
 const GLASS_ML = 250;
-const TARGET_GLASSES = 12;
 
-function GlassIcon({ filled }) {
+const GlassIcon = memo(function GlassIcon({ filled }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -25,20 +25,38 @@ function GlassIcon({ filled }) {
       />
     </svg>
   );
-}
+});
 
 GlassIcon.propTypes = {
   filled: PropTypes.bool.isRequired,
 };
 
 export default function WaterIntakeCard() {
-  const [glasses, setGlasses] = useState(TOTAL_GLASSES);
+  useHydrationDaySync();
 
-  const consumed = (glasses * GLASS_ML) / 1000;
-  const target = (TARGET_GLASSES * GLASS_ML) / 1000;
+  const entries = useHydrationStore((state) => state.entriesByDate[state.dateKey] ?? []);
+  const goalMl = useHydrationStore((state) => state.goalMl);
+  const addEntry = useHydrationStore((state) => state.addEntry);
+  const subtractEntry = useHydrationStore((state) => state.subtractEntry);
 
-  const add = () => {
-    if (glasses < TARGET_GLASSES) setGlasses((g) => g + 1);
+  const consumedMl = useMemo(
+    () => entries.reduce((sum, entry) => sum + entry.ml, 0),
+    [entries]
+  );
+
+  const targetGlasses = Math.max(1, Math.ceil(goalMl / GLASS_ML));
+  const glasses = Math.min(targetGlasses, Math.floor(consumedMl / GLASS_ML));
+  const glassSlots = Array.from({ length: targetGlasses }, (_, slot) => slot + 1);
+
+  const consumed = consumedMl / 1000;
+  const target = goalMl / 1000;
+
+  const handleAddGlass = () => {
+    addEntry(GLASS_ML, "Water Bottle");
+  };
+
+  const handleRemoveGlass = () => {
+    subtractEntry(GLASS_ML, "Water Bottle");
   };
 
   return (
@@ -51,21 +69,29 @@ export default function WaterIntakeCard() {
       </div>
 
       <div className={styles.glassGrid}>
-        {Array.from({ length: TARGET_GLASSES }, (_, slot) => slot + 1).map(
-          (slot) => (
-            <GlassIcon key={slot} filled={slot <= glasses} />
-          ),
-        )}
+        {glassSlots.map((slot) => (
+          <GlassIcon key={slot} filled={slot <= glasses} />
+        ))}
       </div>
 
-      <button
-        type="button"
-        onClick={add}
-        className={styles.addBtn}
-        disabled={glasses >= TARGET_GLASSES}
-      >
-        + Add 250ml Glass
-      </button>
+      <div className={styles.actionRow}>
+        <button
+          type="button"
+          onClick={handleAddGlass}
+          className={styles.addBtn}
+          disabled={consumedMl >= goalMl}
+        >
+          + Add 250ml Glass
+        </button>
+        <button
+          type="button"
+          onClick={handleRemoveGlass}
+          className={styles.removeBtn}
+          disabled={consumedMl <= 0}
+        >
+          - Remove 250ml Glass
+        </button>
+      </div>
     </div>
   );
 }

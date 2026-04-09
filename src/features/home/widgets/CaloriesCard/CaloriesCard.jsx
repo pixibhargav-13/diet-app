@@ -1,78 +1,61 @@
+import PropTypes from "prop-types";
 import styles from "./CaloriesCard.module.css";
-
-const CONSUMED = 1300;
-const GOAL = 2000;
 
 const R = 52;
 const CIRC = 2 * Math.PI * R;
-const PCT = Math.min((CONSUMED / GOAL) * 100, 100);
-const DASH = (PCT / 100) * CIRC;
-
 function getStatus(consumed, goal) {
+  if (goal <= 0) return "danger";
   const ratio = consumed / goal;
-  if (ratio <= 0.85 || (ratio >= 0.95 && ratio <= 1.05)) return "good";
-  if (ratio < 0.7 || (ratio > 1.05 && ratio <= 1.2)) return "warn";
+  const delta = Math.abs(ratio - 1);
+
+  if (delta <= 0.1) return "good";
+  if (delta <= 0.25) return "warn";
   return "danger";
 }
 
-const STATUS_COLORS = {
-  good: {
-    ring: "#2a4365",
-    badge: {
-      color: "#4a7c59",
-      bg: "#f0fdf4",
-      border: "#bbf7d0",
-      label: "On Track",
-    },
-  },
-  warn: {
-    ring: "#d4a72c",
-    badge: {
-      color: "#92700a",
-      bg: "#fff8e1",
-      border: "#fde68a",
-      label: "Check In",
-    },
-  },
-  danger: {
-    ring: "#c44545",
-    badge: {
-      color: "#c44545",
-      bg: "#fdecec",
-      border: "#fca5a5",
-      label: "Off Track",
-    },
-  },
+const STATUS_LABELS = {
+  good: "On Track",
+  warn: "Check In",
+  danger: "Off Track",
 };
 
-export default function CaloriesCard() {
-  const status = getStatus(CONSUMED, GOAL);
-  const { ring, badge } = STATUS_COLORS[status];
+export default function CaloriesCard({ consumed = 1300, goal = 2000, onQuickLog }) {
+  const safeGoal = goal > 0 ? goal : 1;
+  const pct = Math.min((consumed / safeGoal) * 100, 100);
+  const dash = (pct / 100) * CIRC;
+  const status = getStatus(consumed, goal);
+  const statusToken = `${status[0].toUpperCase()}${status.slice(1)}`;
+
+  const badgeClassName = `${styles.badge} ${styles[`badge${statusToken}`]}`;
+  const ringClassName = `${styles.progressRing} ${styles[`ring${statusToken}`]}`;
+  const valueClassName = `${styles.donutValue} ${styles[`value${statusToken}`]}`;
 
   return (
     <div className={styles.card}>
       <div className={styles.header}>
         <span className={styles.title}>Calories Consumed</span>
-        <span
-          className={styles.badge}
-          style={{
-            color: badge.color,
-            background: badge.bg,
-            borderColor: badge.border,
-          }}
-        >
-          {badge.label}
-        </span>
+        <span className={badgeClassName}>{STATUS_LABELS[status]}</span>
       </div>
 
-      <div className={styles.donutWrap}>
-        <svg viewBox="0 0 120 120" className={styles.donut}>
+      <div
+        className={styles.donutWrap}
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={goal > 0 ? goal : 0}
+        aria-valuenow={Math.max(0, Math.round(consumed))}
+        aria-label="Calories consumed"
+      >
+        <svg
+          viewBox="0 0 120 120"
+          className={styles.donut}
+          preserveAspectRatio="xMidYMid meet"
+        >
           <circle
             cx="60"
             cy="60"
             r={R}
             fill="none"
-            stroke="#e5e7eb"
+            className={styles.trackRing}
             strokeWidth="9"
           />
           <circle
@@ -80,25 +63,20 @@ export default function CaloriesCard() {
             cy="60"
             r={R}
             fill="none"
-            stroke={ring}
             strokeWidth="9"
-            strokeDasharray={`${DASH} ${CIRC}`}
+            strokeDasharray={`${dash} ${CIRC}`}
             strokeLinecap="round"
             transform="rotate(-90 60 60)"
-            style={{ transition: "stroke-dasharray 0.5s ease" }}
+            className={ringClassName}
           />
         </svg>
         <div className={styles.donutCenter}>
-          <span className={styles.donutValue} style={{ color: ring }}>
-            {CONSUMED.toLocaleString()}
-          </span>
-          <span className={styles.donutSub}>
-            / {GOAL.toLocaleString()} kcal
-          </span>
+          <span className={valueClassName}>{consumed.toLocaleString()}</span>
+          <span className={styles.donutSub}>/ {Math.max(0, goal).toLocaleString()} kcal</span>
         </div>
       </div>
 
-      <button type="button" className={styles.logBtn}>
+      <button type="button" className={styles.logBtn} onClick={onQuickLog}>
         <svg
           viewBox="0 0 24 24"
           fill="none"
@@ -118,3 +96,9 @@ export default function CaloriesCard() {
     </div>
   );
 }
+
+CaloriesCard.propTypes = {
+  consumed: PropTypes.number,
+  goal: PropTypes.number,
+  onQuickLog: PropTypes.func,
+};

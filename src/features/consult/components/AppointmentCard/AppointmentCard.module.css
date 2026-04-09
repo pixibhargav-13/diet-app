@@ -1,0 +1,224 @@
+/* ─── AppointmentCard.module.css ─────────────────────────────────────────── */
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: box-shadow 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.dateBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.date {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.time {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 1px solid;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badgeConfirmed {
+  background: #f0fdf4;
+  color: var(--color-success);
+  border-color: #bbf7d0;
+}
+
+.badgePending {
+  background: #fff8e1;
+  color: #6f560c;
+  border-color: #f3d78b;
+}
+
+.badgeCompleted {
+  background: #f3f4f6;
+  color: var(--color-muted);
+  border-color: var(--color-border);
+}
+
+.dietitian {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dietitianName {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.specialty {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.typePill {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  border-radius: 999px;
+  padding: 3px 10px;
+  flex-shrink: 0;
+}
+
+.typePillEmerg {
+  background: #fdecec;
+  color: var(--color-danger);
+}
+
+.meetRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.meetIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.meetLink {
+  flex: 1;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copyBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-muted);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 4px;
+  transition: color 0.15s ease;
+}
+
+.copyBtn:hover {
+  color: var(--color-primary);
+}
+
+.viewMeetBtn {
+  background: var(--color-primary);
+  border: none;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+}
+
+.viewMeetBtn:hover {
+  background: var(--color-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.actionBtn {
+  border-radius: 8px;
+  border: 1.5px solid var(--color-border);
+  background: #fff;
+  padding: 8px 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.actionBtn:hover {
+  background: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
+.actionBtnPrimary {
+  border-radius: 8px;
+  background: var(--color-primary);
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.actionBtnPrimary:hover {
+  background: var(--color-secondary);
+}
+
+.copyBtn:focus-visible,
+.viewMeetBtn:focus-visible,
+.actionBtn:focus-visible,
+.actionBtnPrimary:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}

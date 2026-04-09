@@ -1,0 +1,116 @@
+/* ─── CalorieRing.module.css ─────────────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 24px 28px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.sectionLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Ring */
+.ringWrap {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+}
+
+.fillArc {
+  animation: drawArc 0.9s cubic-bezier(0.34, 1.1, 0.64, 1) forwards;
+}
+
+@keyframes drawArc {
+  from { stroke-dasharray: 0 var(--circ); }
+  to   { stroke-dasharray: var(--dash) var(--circ); }
+}
+
+/* Center text */
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.consumed {
+  font-size: 2.75rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.consumedLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.goalLabel {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* Stat tiles */
+.tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+}
+
+.tile {
+  background: #f9fafb;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.tileValue {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2a4365;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.tileLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+/* Mobile */
+@media (max-width: 540px) {
+  .ringWrap { width: 200px; height: 200px; }
+  .consumed { font-size: 2.25rem; }
+}

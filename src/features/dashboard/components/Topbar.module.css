@@ -4,14 +4,20 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  height: 64px;
+  min-height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 32px;
+  flex-shrink: 0;
+}
+
+.inner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  min-height: 64px;
   display: flex;
   align-items: center;
   gap: 16px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 0 24px;
-  flex-shrink: 0;
 }
 
 /* Hamburger — visible only on mobile */
@@ -51,6 +57,7 @@
   .menuBtn {
     display: none;
   }
+
   .mobileDivider {
     display: none;
   }
@@ -59,7 +66,7 @@
 /* Search */
 .searchWrap {
   flex: 1;
-  max-width: 360px;
+  max-width: 460px;
 }
 
 .searchInner {
@@ -106,7 +113,7 @@
 .right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin-left: auto;
 }
 
@@ -170,9 +177,14 @@
 }
 
 @media (max-width: 640px) {
+  .topbar {
+    padding: 0 20px;
+  }
+
   .greeting {
     display: none;
   }
+
   .divider {
     display: none;
   }

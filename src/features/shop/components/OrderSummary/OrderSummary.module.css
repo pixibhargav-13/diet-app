@@ -1,0 +1,143 @@
+/* ─── OrderSummary.module.css ────────────────────────────────────────────── */
+
+.card {
+  background: #2a4365;
+  border-radius: 16px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  color: #ffffff;
+}
+
+.title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+/* Line items */
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lineLabel {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.lineVal {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 2px 0;
+}
+
+/* Total row */
+.totalRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.totalLabel {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.totalVal {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+}
+
+/* Promo code */
+.promoRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.promoInput {
+  flex: 1;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 9px 12px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.promoInput::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.promoInput:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.promoInput:disabled {
+  opacity: 0.5;
+}
+
+.promoInputErr {
+  border-color: #fca5a5;
+}
+
+.promoBtn {
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  padding: 9px 18px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.promoBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.promoBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.promoErr {
+  font-size: 0.75rem;
+  color: #fca5a5;
+  margin: 0;
+}
+
+.promoOk {
+  font-size: 0.75rem;
+  color: #86efac;
+  margin: 0;
+  font-weight: 600;
+}

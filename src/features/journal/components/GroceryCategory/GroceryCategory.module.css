@@ -1,0 +1,40 @@
+/* ─── GroceryCategory.module.css ─────────────────────────────────────────── */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0 6px;
+}
+
+.catIcon {
+  display: flex;
+  align-items: center;
+  color: #4a6fa5;
+  flex-shrink: 0;
+}
+
+.catIcon svg { width: 17px; height: 17px; }
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2a4365;
+  transition: color 0.15s ease;
+}
+
+.labelDone { color: #9ca3af; }
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

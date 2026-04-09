@@ -1,0 +1,130 @@
+/* ─── ExpertAnalysisPanel.module.css ─────────────────────────────────────── */
+
+.panel {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 10px rgba(17, 24, 39, 0.04);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2a4365;
+  margin: 0;
+  text-align: left;
+}
+
+/* Status icon */
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #eef4fa;
+  border: 1px solid #d0e4f5;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  color: #2a4365;
+}
+
+/* Status text */
+.statusTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  text-align: left;
+}
+
+.statusTitleSuccess {
+  color: #4a7c59;
+}
+
+.statusDesc {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+  text-align: left;
+}
+
+/* Info hint */
+.hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.hintIcon {
+  flex-shrink: 0;
+  color: #4a6fa5;
+  margin-top: 1px;
+}
+
+.hintText {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Buttons */
+.submitBtn {
+  width: 100%;
+  border-radius: 10px;
+  background: #2a4365;
+  border: none;
+  padding: 13px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #4a6fa5;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cancelBtn {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 6px;
+  text-align: center;
+  transition: color 0.15s ease;
+}
+
+.cancelBtn:hover {
+  color: #2a4365;
+}

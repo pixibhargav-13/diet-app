@@ -1,0 +1,123 @@
+/* ─── ProgressPage.module.css ────────────────────────────────────────────── */
+
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.4vw, 22px);
+    width: 100%;
+    box-sizing: border-box;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ── Page header ─────────────────────────────────────────────────────────── */
+.pageHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.025em;
+    margin: 0 0 4px;
+}
+
+.subtext {
+    font-size: 0.9375rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.addBtnDesktop {
+    display: none;
+}
+
+/* ── Charts grid ─────────────────────────────────────────────────────────── */
+.chartsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* mobile: stacked */
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    /* stretch makes every cell the same height as the tallest cell */
+    align-items: stretch;
+}
+
+/* Every direct child of the grid must be height:100% so the inner
+   .section card fills the cell — without this, height:100% on the
+   component's root element has nothing to measure against */
+.chartsGrid>* {
+    min-width: 0;
+    height: 100%;
+}
+
+/* ── FAB ─────────────────────────────────────────────────────────────────── */
+.fab {
+    position: fixed;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    right: 20px;
+    z-index: 50;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #2a4365;
+    border: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(42, 67, 101, 0.4);
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.fab:hover {
+    background: #4a6fa5;
+}
+
+.fab:active {
+    transform: scale(0.93);
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (min-width: 640px) {
+    .addBtnDesktop {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        border-radius: 10px;
+        background: #2a4365;
+        border: none;
+        padding: 10px 18px;
+        font-size: 0.9375rem;
+        font-weight: 700;
+        color: #ffffff;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background 0.15s ease;
+    }
+
+    .addBtnDesktop:hover {
+        background: #4a6fa5;
+    }
+
+    .fab {
+        display: none;
+    }
+
+    .page {
+        padding-bottom: 48px;
+    }
+}
+
+/* Desktop — side by side, equal height guaranteed by align-items:stretch */
+@media (min-width: 900px) {
+    .chartsGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

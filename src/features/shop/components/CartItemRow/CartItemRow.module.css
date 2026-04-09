@@ -1,0 +1,130 @@
+/* ─── CartItemRow.module.css ─────────────────────────────────────────────── */
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.row:last-child { border-bottom: none; }
+
+/* Image */
+.imgWrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f3f4f6;
+  flex-shrink: 0;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info */
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.descriptor {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Controls row */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+/* Qty stepper */
+.qtyBtn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.qtyBtn:hover { border-color: #2a4365; background: #eef4fa; color: #2a4365; }
+
+.qty {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111827;
+  min-width: 28px;
+  text-align: center;
+}
+
+/* Remove */
+.removeBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #c44545;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-left: 4px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+.removeBtn:hover { background: #fdecec; }
+
+/* Price col */
+.priceCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.price {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+/* Badges */
+.badge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+
+.badgeGreen { background: #f0fdf4; color: #4a7c59; }
+.badgeBlue  { background: #eef4fa; color: #2a4365; }

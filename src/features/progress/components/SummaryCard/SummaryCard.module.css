@@ -1,0 +1,102 @@
+/* ─── SummaryCard.module.css ─────────────────────────────────────────────── */
+
+.card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: clamp(14px, 2vw, 20px) clamp(14px, 2vw, 20px) clamp(12px, 1.8vw, 16px);
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+}
+
+.title {
+    font-size: clamp(0.9rem, 1.3vw, 1rem);
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 clamp(10px, 1.8vw, 14px);
+}
+
+/* 6 columns on desktop — same width as the two chart cards combined */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.block {
+    background: #ffffff;
+    min-width: 0;
+    padding: clamp(10px, 1.5vw, 14px) clamp(10px, 1.7vw, 16px);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.blockLabel {
+    font-size: clamp(0.65rem, 0.95vw, 0.7rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.blockValue {
+    font-size: clamp(0.95rem, 1.5vw, 1.06rem);
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.blockSub {
+    font-size: clamp(0.7rem, 1vw, 0.76rem);
+    color: #d1d5db;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+/* Tone colours */
+.good {
+    color: #4a7c59;
+}
+
+.warn {
+    color: #d4a72c;
+}
+
+.danger {
+    color: #c44545;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+/* Tablet — 3 cols × 2 rows */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 540px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .blockValue {
+        font-size: 0.9375rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

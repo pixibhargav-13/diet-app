@@ -1,7 +1,10 @@
 // Sidebar — nav items + Log Activity button only (user info lives in Topbar)
+import { useState } from "react";
 import PropTypes from "prop-types";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../../store/useAuthStore";
+import { useNutritionStore } from "../../../store/useNutritionStore";
+import { toastInfo, toastMealLogged, toastWarning } from "../../../utils/Toast";
 import styles from "./Sidebar.module.css";
 
 const NAV = [
@@ -40,6 +43,24 @@ const NAV = [
         <line x1="9" y1="12" x2="13" y2="12" />
       </svg>
     ),
+    children: [
+      {
+        name: "Log Meal Entry",
+        to: "/dashboard/journal/log-meal-entry",
+      },
+      {
+        name: "Water Intake",
+        to: "/dashboard/journal/water-intake",
+      },
+      {
+        name: "Nutrition analysis",
+        to: "/dashboard/journal/nutrition-analysis",
+      },
+      {
+        name: "Grocery list",
+        to: "/dashboard/journal/grocery-list",
+      },
+    ],
   },
   {
     name: "Progress",
@@ -90,16 +111,60 @@ const NAV = [
         <path d="M16 10a4 4 0 0 1-8 0" />
       </svg>
     ),
+    children: [
+      {
+        name: "Product",
+        to: "/dashboard/shop",
+      },
+      {
+        name: "Checkout",
+        to: "/dashboard/shop/checkout",
+      },
+    ],
   },
 ];
 
 export default function Sidebar({ onClose }) {
   const navigate = useNavigate();
+  const location = useLocation();
   const { logout } = useAuthStore();
+  const quickLogNextMeal = useNutritionStore((state) => state.quickLogNextMeal);
+  const isDismissible = typeof onClose === "function";
+  const [journalExpanded, setJournalExpanded] = useState(
+    location.pathname.startsWith("/dashboard/journal")
+  );
+  const [shopExpanded, setShopExpanded] = useState(
+    location.pathname.startsWith("/dashboard/shop")
+  );
 
   const handleLogout = () => {
     logout();
+    onClose?.();
     navigate("/login", { replace: true });
+  };
+
+  const handleJournalToggle = () => {
+    setJournalExpanded((currentValue) => !currentValue);
+  };
+
+  const handleShopToggle = () => {
+    setShopExpanded((currentValue) => !currentValue);
+  };
+
+  const handleQuickLog = () => {
+    const result = quickLogNextMeal("Sidebar Quick Log");
+
+    if (result.ok) {
+      toastMealLogged();
+      return;
+    }
+
+    if (result.reason === "NO_PENDING_MEALS") {
+      toastInfo("All planned meals for today are already logged.");
+      return;
+    }
+
+    toastWarning("Unable to quick-log right now.");
   };
 
   return (
@@ -107,32 +172,157 @@ export default function Sidebar({ onClose }) {
       {/* Logo */}
       <div className={styles.logoRow}>
         <span className={styles.logo}>Vitals</span>
+        {isDismissible ? (
+          <button
+            type="button"
+            onClick={onClose}
+            className={styles.closeBtn}
+            aria-label="Close sidebar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        ) : null}
       </div>
 
       {/* Nav */}
       <nav className={styles.nav} aria-label="Dashboard navigation">
         <ul className={styles.navList}>
-          {NAV.map((item) => (
-            <li key={item.name}>
-              <NavLink
-                to={item.to}
-                end={item.to === "/dashboard"}
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `${styles.navLink} ${isActive ? styles.navLinkActive : ""}`
-                }
-              >
-                <span className={styles.navIcon}>{item.icon}</span>
-                {item.name}
-              </NavLink>
-            </li>
-          ))}
+          {NAV.map((item) => {
+            const isJournal = item.name === "Journal";
+            const isShop = item.name === "Shop";
+            const isJournalRoute = location.pathname.startsWith("/dashboard/journal");
+            const isShopRoute = location.pathname.startsWith("/dashboard/shop");
+            const isJournalExpanded = isJournalRoute || journalExpanded;
+            const isShopExpanded = isShopRoute || shopExpanded;
+
+            return (
+              <li key={item.name}>
+                {isJournal ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handleJournalToggle}
+                      className={`${styles.navLink} ${isJournalExpanded ? styles.navLinkActive : ""} ${isJournalExpanded ? styles.navLinkOpen : ""
+                        } ${styles.navButton}`}
+                      aria-expanded={isJournalExpanded}
+                      aria-controls="journal-submenu"
+                    >
+                      <span className={styles.navIcon}>{item.icon}</span>
+                      <span className={styles.navLabel}>{item.name}</span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className={`${styles.chevronIcon} ${isJournalExpanded ? styles.chevronOpen : ""
+                          }`}
+                        aria-hidden="true"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </button>
+
+                    {isJournalExpanded ? (
+                      <ul id="journal-submenu" className={styles.subnavList}>
+                        {item.children.map((child) => (
+                          <li key={child.name}>
+                            <NavLink
+                              to={child.to}
+                              onClick={onClose}
+                              className={({ isActive }) =>
+                                `${styles.subnavLink} ${isActive ? styles.subnavLinkActive : ""
+                                }`
+                              }
+                            >
+                              {child.name}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </>
+                ) : isShop ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handleShopToggle}
+                      className={`${styles.navLink} ${isShopExpanded ? styles.navLinkActive : ""} ${isShopExpanded ? styles.navLinkOpen : ""
+                        } ${styles.navButton}`}
+                      aria-expanded={isShopExpanded}
+                      aria-controls="shop-submenu"
+                    >
+                      <span className={styles.navIcon}>{item.icon}</span>
+                      <span className={styles.navLabel}>{item.name}</span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className={`${styles.chevronIcon} ${isShopExpanded ? styles.chevronOpen : ""
+                          }`}
+                        aria-hidden="true"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </button>
+
+                    {isShopExpanded ? (
+                      <ul id="shop-submenu" className={styles.subnavList}>
+                        {item.children.map((child) => (
+                          <li key={child.name}>
+                            <NavLink
+                              to={child.to}
+                              end={child.to === "/dashboard/shop"}
+                              onClick={onClose}
+                              className={({ isActive }) =>
+                                `${styles.subnavLink} ${isActive ? styles.subnavLinkActive : ""
+                                }`
+                              }
+                            >
+                              {child.name}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </>
+                ) : (
+                  <NavLink
+                    to={item.to}
+                    end={item.to === "/dashboard"}
+                    onClick={onClose}
+                    className={({ isActive }) =>
+                      `${styles.navLink} ${isActive ? styles.navLinkActive : ""
+                      }`
+                    }
+                  >
+                    <span className={styles.navIcon}>{item.icon}</span>
+                    {item.name}
+                  </NavLink>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </nav>
 
       {/* Bottom — Log Activity + logout */}
       <div className={styles.bottom}>
-        <button type="button" className={styles.logActivityBtn}>
+        <button type="button" className={styles.logActivityBtn} onClick={handleQuickLog}>
           <svg
             viewBox="0 0 24 24"
             fill="none"
