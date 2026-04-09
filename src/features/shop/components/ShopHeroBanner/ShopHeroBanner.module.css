@@ -1,0 +1,110 @@
+/* ─── ShopHeroBanner.module.css ──────────────────────────────────────────── */
+
+.banner {
+  position: relative;
+  background: #2a4365;
+  border-radius: 20px;
+  padding: 44px 48px;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Content sits above decorative layer */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 520px;
+}
+
+.badge {
+  display: inline-flex;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a7c59;
+  background: #f0fdf4;
+  border-radius: 999px;
+  padding: 4px 12px;
+  width: fit-content;
+}
+
+.heading {
+  font-size: 1.875rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.desc {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 24px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #2a4365;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 4px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.cta:hover { background: #eef4fa; transform: translateY(-1px); }
+
+/* Decorative blobs */
+.deco {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.blob1 {
+  position: absolute;
+  right: -60px; top: -80px;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: rgba(74, 124, 89, 0.18);
+}
+
+.blob2 {
+  position: absolute;
+  right: 120px; bottom: -100px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: rgba(127, 170, 214, 0.14);
+}
+
+.blob3 {
+  position: absolute;
+  right: -20px; bottom: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(212, 167, 44, 0.1);
+}
+
+@media (max-width: 640px) {
+  .banner  { padding: 32px 24px; min-height: 180px; }
+  .heading { font-size: 1.5rem; }
+  .blob1   { width: 200px; height: 200px; right: -40px; }
+  .blob2, .blob3 { display: none; }
+}

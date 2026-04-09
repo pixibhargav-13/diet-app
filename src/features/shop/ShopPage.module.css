@@ -1,0 +1,93 @@
+/* ─── ShopPage.module.css ────────────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: calc(112px + env(safe-area-inset-bottom));
+}
+
+/* Section heading */
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+.sectionDesc {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 62ch;
+}
+
+/* Cart badge in header area */
+.cartBadge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #eef4fa;
+  border: 1.5px solid #d0e4f5;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #2a4365;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Product grid — 5 columns ────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+/* 4 cols at medium screens */
+@media (max-width: 1320px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablet */
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .page {
+    gap: 20px;
+    padding-bottom: calc(152px + env(safe-area-inset-bottom));
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

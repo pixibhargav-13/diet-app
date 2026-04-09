@@ -111,6 +111,16 @@ const NAV = [
         <path d="M16 10a4 4 0 0 1-8 0" />
       </svg>
     ),
+    children: [
+      {
+        name: "Product",
+        to: "/dashboard/shop",
+      },
+      {
+        name: "Checkout",
+        to: "/dashboard/shop/checkout",
+      },
+    ],
   },
 ];
 
@@ -123,6 +133,9 @@ export default function Sidebar({ onClose }) {
   const [journalExpanded, setJournalExpanded] = useState(
     location.pathname.startsWith("/dashboard/journal")
   );
+  const [shopExpanded, setShopExpanded] = useState(
+    location.pathname.startsWith("/dashboard/shop")
+  );
 
   const handleLogout = () => {
     logout();
@@ -132,6 +145,10 @@ export default function Sidebar({ onClose }) {
 
   const handleJournalToggle = () => {
     setJournalExpanded((currentValue) => !currentValue);
+  };
+
+  const handleShopToggle = () => {
+    setShopExpanded((currentValue) => !currentValue);
   };
 
   const handleQuickLog = () => {
@@ -182,8 +199,11 @@ export default function Sidebar({ onClose }) {
         <ul className={styles.navList}>
           {NAV.map((item) => {
             const isJournal = item.name === "Journal";
+            const isShop = item.name === "Shop";
             const isJournalRoute = location.pathname.startsWith("/dashboard/journal");
+            const isShopRoute = location.pathname.startsWith("/dashboard/shop");
             const isJournalExpanded = isJournalRoute || journalExpanded;
+            const isShopExpanded = isShopRoute || shopExpanded;
 
             return (
               <li key={item.name}>
@@ -220,6 +240,53 @@ export default function Sidebar({ onClose }) {
                           <li key={child.name}>
                             <NavLink
                               to={child.to}
+                              onClick={onClose}
+                              className={({ isActive }) =>
+                                `${styles.subnavLink} ${isActive ? styles.subnavLinkActive : ""
+                                }`
+                              }
+                            >
+                              {child.name}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </>
+                ) : isShop ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handleShopToggle}
+                      className={`${styles.navLink} ${isShopExpanded ? styles.navLinkActive : ""} ${isShopExpanded ? styles.navLinkOpen : ""
+                        } ${styles.navButton}`}
+                      aria-expanded={isShopExpanded}
+                      aria-controls="shop-submenu"
+                    >
+                      <span className={styles.navIcon}>{item.icon}</span>
+                      <span className={styles.navLabel}>{item.name}</span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className={`${styles.chevronIcon} ${isShopExpanded ? styles.chevronOpen : ""
+                          }`}
+                        aria-hidden="true"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </button>
+
+                    {isShopExpanded ? (
+                      <ul id="shop-submenu" className={styles.subnavList}>
+                        {item.children.map((child) => (
+                          <li key={child.name}>
+                            <NavLink
+                              to={child.to}
+                              end={child.to === "/dashboard/shop"}
                               onClick={onClose}
                               className={({ isActive }) =>
                                 `${styles.subnavLink} ${isActive ? styles.subnavLinkActive : ""

@@ -1,0 +1,119 @@
+/* ─── PaymentProtocol.module.css ─────────────────────────────────────────── */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Method cards */
+.methods { display: flex; flex-direction: column; gap: 8px; }
+
+.methodCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.methodCard:hover            { border-color: #7faad6; }
+.methodCardActive            { border-color: #2a4365; background: #f8fafd; box-shadow: 0 0 0 1px #2a4365; }
+
+.methodIconWrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.methodIconActive { background: #eef4fa; color: #2a4365; }
+
+.methodInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.methodLabel { font-size: 0.9375rem; font-weight: 700; color: #111827; }
+.methodSub   { font-size: 0.75rem;   font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #9ca3af; }
+
+/* Radio circle */
+.radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+
+.radioFilled { border-color: #2a4365; }
+
+.radioDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2a4365;
+}
+
+/* Place Order */
+.placeOrderBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  border-radius: 12px;
+  background: #2a4365;
+  border: none;
+  padding: 15px 24px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s ease, transform 0.15s ease;
+  letter-spacing: -0.01em;
+}
+.placeOrderBtn:hover:not(:disabled) { background: #4a6fa5; transform: translateY(-1px); }
+.placeOrderBtn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+/* SSL note */
+.sslNote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #d1d5db;
+  margin: 0;
+}

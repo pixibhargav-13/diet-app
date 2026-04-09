@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { useHydrationStore } from '../../../store/useHydrationStore'
+import useHydrationDaySync from '../../../hooks/useHydrationDaySync'
 import WaterBottle from '../components/WaterBottle/WaterBottle'
 import HydrationLog from '../components/HydrationLog/HydrationLog'
 import HealthInsightBar from '../components/HealthInsightBar/HealthInsightBar'
@@ -11,9 +12,12 @@ const INSIGHT_STATS = [
 ]
 
 export default function WaterIntakePage() {
-  const entries = useHydrationStore((state) => state.entries)
+  useHydrationDaySync()
+
+  const entries = useHydrationStore((state) => state.entriesByDate[state.dateKey] ?? [])
   const goalMl = useHydrationStore((state) => state.goalMl)
   const addEntry = useHydrationStore((state) => state.addEntry)
+  const subtractEntry = useHydrationStore((state) => state.subtractEntry)
   const setGoalMl = useHydrationStore((state) => state.setGoalMl)
 
   const [goalDraft, setGoalDraft] = useState(String(goalMl))
@@ -39,6 +43,11 @@ export default function WaterIntakePage() {
     addEntry(ml, 'Custom Volume')
     setActiveQuickMl(null)
   }, [addEntry])
+
+  const handleQuickRemove = useCallback((ml) => {
+    subtractEntry(ml, 'Water Bottle')
+    setActiveQuickMl(null)
+  }, [subtractEntry])
 
   const handleGoalOpen = useCallback(() => {
     setGoalDraft(String(goalMl))
@@ -116,6 +125,7 @@ export default function WaterIntakePage() {
             goal={goalMl}
             progressPct={progressPct}
             onQuickAdd={handleQuickAdd}
+            onQuickRemove={handleQuickRemove}
             activeQuickMl={activeQuickMl}
           />
         </div>

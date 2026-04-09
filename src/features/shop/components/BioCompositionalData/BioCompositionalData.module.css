@@ -1,0 +1,75 @@
+/* ─── BioCompositionalData.module.css ───────────────────────────────────── */
+
+.card {
+  background: #f9fafb;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.headerIcon {
+  width: 16px;
+  height: 16px;
+  color: #4a6fa5;
+  flex-shrink: 0;
+}
+
+.label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.row td {
+  padding: 8px 0;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.row:last-child td { border-bottom: none; }
+
+.name {
+  font-size: 0.875rem;
+  color: #4b5563;
+  width: 55%;
+}
+
+.value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: right;
+}
+
+/* Certificate link */
+.certLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4a6fa5;
+  cursor: pointer;
+  width: fit-content;
+  transition: color 0.15s ease;
+}
+.certLink:hover { color: #2a4365; }

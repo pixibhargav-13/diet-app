@@ -30,7 +30,9 @@ const GroceryListPage = lazy(() =>
 );
 const ProgressPage = lazy(() => import("../../features/progress/ProgressPage"));
 const ConsultPage = lazy(() => import("../../features/consult/ConsultPage"));
-const ShopPage = lazy(() => import("../../features/shop/Shop"));
+const ShopPage = lazy(() => import("../../features/shop/ShopPage"));
+const ProductDetailPage = lazy(() => import("../../features/shop/ProductDetailPage"));
+const CheckoutPage = lazy(() => import("../../features/shop/CheckoutPage"));
 const NotFound = lazy(() => import("../../features/errors/NotFound"));
 
 function withSuspense(element) {
@@ -111,6 +113,8 @@ export const router = createBrowserRouter([
             { path: "progress", element: routeElement(ProgressPage) },
             { path: "consult", element: routeElement(ConsultPage) },
             { path: "shop", element: routeElement(ShopPage) },
+            { path: "shop/:productId", element: routeElement(ProductDetailPage) },
+            { path: "shop/checkout", element: routeElement(CheckoutPage) },
         ],
     },
 

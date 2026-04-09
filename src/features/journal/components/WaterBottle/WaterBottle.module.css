@@ -134,7 +134,7 @@
 /* Quick-add buttons */
 .quickRow {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin-top: 6px;
 }
@@ -151,6 +151,16 @@
   padding: 14px 10px 10px;
   cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.quickBtnSecondary {
+  background: #fff7f7;
+  border-color: #f1c9c9;
+}
+
+.quickBtnSecondary:hover {
+  border-color: #c44545;
+  background: #fdecec;
 }
 
 .quickBtn:hover {
@@ -197,5 +207,9 @@
 
   .consumed {
     font-size: 2.25rem;
+  }
+
+  .quickRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

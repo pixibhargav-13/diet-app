@@ -1,0 +1,58 @@
+/* ─── ProductImageGallery.module.css ─────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Main image */
+.main {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f3f4f6;
+  aspect-ratio: 4 / 3;
+}
+
+.mainImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.main:hover .mainImg { transform: scale(1.02); }
+
+/* Thumbnail strip */
+.thumbRow {
+  display: flex;
+  gap: 10px;
+}
+
+.thumb {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  background: #f9fafb;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.15s ease;
+}
+
+.thumb:hover    { border-color: #7faad6; }
+.thumbActive    { border-color: #2a4365; box-shadow: 0 0 0 1px #2a4365; }
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 540px) {
+  .thumb { width: 64px; height: 64px; }
+}

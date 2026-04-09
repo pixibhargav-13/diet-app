@@ -1,6 +1,7 @@
 import { memo, useMemo } from "react";
 import PropTypes from "prop-types";
 import { useHydrationStore } from "../../../../store/useHydrationStore";
+import useHydrationDaySync from "../../../../hooks/useHydrationDaySync";
 import styles from "./WaterIntakeCard.module.css";
 
 const GLASS_ML = 250;
@@ -31,9 +32,12 @@ GlassIcon.propTypes = {
 };
 
 export default function WaterIntakeCard() {
-  const entries = useHydrationStore((state) => state.entries);
+  useHydrationDaySync();
+
+  const entries = useHydrationStore((state) => state.entriesByDate[state.dateKey] ?? []);
   const goalMl = useHydrationStore((state) => state.goalMl);
   const addEntry = useHydrationStore((state) => state.addEntry);
+  const subtractEntry = useHydrationStore((state) => state.subtractEntry);
 
   const consumedMl = useMemo(
     () => entries.reduce((sum, entry) => sum + entry.ml, 0),
@@ -51,6 +55,10 @@ export default function WaterIntakeCard() {
     addEntry(GLASS_ML, "Water Bottle");
   };
 
+  const handleRemoveGlass = () => {
+    subtractEntry(GLASS_ML, "Water Bottle");
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.header}>
@@ -66,14 +74,24 @@ export default function WaterIntakeCard() {
         ))}
       </div>
 
-      <button
-        type="button"
-        onClick={handleAddGlass}
-        className={styles.addBtn}
-        disabled={consumedMl >= goalMl}
-      >
-        + Add 250ml Glass
-      </button>
+      <div className={styles.actionRow}>
+        <button
+          type="button"
+          onClick={handleAddGlass}
+          className={styles.addBtn}
+          disabled={consumedMl >= goalMl}
+        >
+          + Add 250ml Glass
+        </button>
+        <button
+          type="button"
+          onClick={handleRemoveGlass}
+          className={styles.removeBtn}
+          disabled={consumedMl <= 0}
+        >
+          - Remove 250ml Glass
+        </button>
+      </div>
     </div>
   );
 }

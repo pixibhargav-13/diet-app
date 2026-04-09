@@ -2,7 +2,7 @@ import { memo, useId } from 'react'
 import PropTypes from 'prop-types'
 import styles from './WaterBottle.module.css'
 
-function WaterBottle({ consumed, goal, progressPct, onQuickAdd, activeQuickMl }) {
+function WaterBottle({ consumed, goal, progressPct, onQuickAdd, onQuickRemove, activeQuickMl }) {
   const uid = useId().replace(/:/g, '')
   const clipId = `bottle-clip-${uid}`
   const gradientId = `water-grad-${uid}`
@@ -126,20 +126,21 @@ function WaterBottle({ consumed, goal, progressPct, onQuickAdd, activeQuickMl })
         <div className={styles.quickRow} aria-label="Quick add hydration">
           {[
             { ml: 250, label: 'Small Glass' },
+            { ml: -250, label: 'Undo Glass', secondary: true },
             { ml: 500, label: 'Medium Bottle' },
           ].map((q) => (
             <button
               key={q.ml}
               type="button"
-              onClick={() => onQuickAdd(q.ml)}
-              className={`${styles.quickBtn} ${activeQuickMl === q.ml ? styles.quickBtnActive : ''}`}
-              aria-label={`Add ${q.ml}ml`}
+              onClick={() => (q.ml > 0 ? onQuickAdd(q.ml) : onQuickRemove(Math.abs(q.ml)))}
+              className={`${styles.quickBtn} ${q.secondary ? styles.quickBtnSecondary : ''} ${activeQuickMl === q.ml ? styles.quickBtnActive : ''}`}
+              aria-label={q.ml > 0 ? `Add ${q.ml}ml` : `Remove ${Math.abs(q.ml)}ml`}
               aria-pressed={activeQuickMl === q.ml}
             >
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" className={styles.quickIcon}>
                 <path d="M5 2h14l-1.5 18H6.5L5 2z" />
               </svg>
-              <span className={styles.quickMl}>+{q.ml}ml</span>
+              <span className={styles.quickMl}>{q.ml > 0 ? `+${q.ml}ml` : `-${Math.abs(q.ml)}ml`}</span>
               <span className={styles.quickLbl}>{q.label}</span>
             </button>
           ))}
@@ -154,6 +155,7 @@ WaterBottle.propTypes = {
   goal: PropTypes.number.isRequired,
   progressPct: PropTypes.number.isRequired,
   onQuickAdd: PropTypes.func.isRequired,
+  onQuickRemove: PropTypes.func.isRequired,
   activeQuickMl: PropTypes.number,
 }
 
