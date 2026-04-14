@@ -1,0 +1,30 @@
+.card {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 28px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.kicker {
+  margin: 0 0 8px;
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #111827;
+}
+
+.description {
+  margin: 12px 0 0;
+  color: #4b5563;
+  line-height: 1.5;
+}

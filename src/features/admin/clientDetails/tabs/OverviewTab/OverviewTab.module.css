@@ -1,0 +1,87 @@
+/* ─── OverviewTab.module.css ─────────────────────────────────────────────── */
+
+.wrap { display: flex; flex-direction: column; gap: 16px; }
+
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.cardLabel {
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #9ca3af; margin: 0;
+}
+
+.cardHeaderRow { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+
+/* Tags */
+.tagGrid { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.conditionTag {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.875rem; font-weight: 600; color: #4b5563;
+  background: #fdecec; border: 1px solid #fca5a5; border-radius: 8px; padding: 5px 12px;
+}
+.conditionEmoji { font-size: 0.9375rem; }
+
+.dietTag {
+  font-size: 0.875rem; font-weight: 600; color: #2a4365;
+  background: #eef4fa; border: 1px solid #d0e4f5; border-radius: 8px; padding: 5px 12px;
+}
+
+.allergyTag {
+  font-size: 0.875rem; font-weight: 600; color: #92700a;
+  background: #fff8e1; border: 1px solid #fde68a; border-radius: 8px; padding: 5px 12px;
+}
+
+.subLabel {
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #d4a72c; margin: 0;
+}
+
+.none { font-size: 0.875rem; color: #9ca3af; }
+
+/* Plan badges */
+.planActiveBadge {
+  font-size: 0.75rem; font-weight: 700; color: #4a7c59;
+  background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 999px; padding: 3px 10px;
+}
+.planNoneBadge {
+  font-size: 0.75rem; font-weight: 700; color: #9ca3af;
+  background: #f3f4f6; border-radius: 999px; padding: 3px 10px;
+}
+
+/* Plan info */
+.planInfo { display: flex; flex-direction: column; gap: 6px; }
+.planName { font-size: 1rem; font-weight: 700; color: #111827; margin: 0; }
+.planMeta { font-size: 0.8125rem; color: #9ca3af; margin: 0; }
+
+.planStats { display: flex; gap: 16px; margin-top: 4px; }
+.planStat  { display: flex; flex-direction: column; gap: 2px; }
+.planStatValue { font-size: 1.25rem; font-weight: 800; color: #2a4365; letter-spacing: -0.02em; }
+.planStatLabel { font-size: 0.6875rem; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.noplan { font-size: 0.875rem; color: #9ca3af; margin: 0; }
+
+/* Body grid */
+.bodyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.bodyItem {
+  display: flex; flex-direction: column; gap: 2px;
+  background: #f9fafb; border-radius: 8px; padding: 10px 12px;
+}
+.bodyItemLabel { font-size: 0.6875rem; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; }
+.bodyItemValue { font-size: 0.9375rem; font-weight: 700; color: #111827; }
+
+@media (max-width: 900px) { .row2 { grid-template-columns: 1fr; } }

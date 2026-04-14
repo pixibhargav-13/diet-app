@@ -1,0 +1,122 @@
+/* ─── AdminDashboard.module.css ──────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 48px;
+}
+
+/* Page header */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.kicker {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin: 0 0 4px;
+}
+
+.heading {
+  font-size: 1.625rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.025em;
+  margin: 0 0 3px;
+}
+
+.date {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Header right — notifications + avatar */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.notifBtn {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.notifBtn:hover { border-color: #2a4365; color: #2a4365; }
+
+.notifDot {
+  position: absolute;
+  top: 6px; right: 6px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #c44545;
+  border: 1.5px solid #fff;
+}
+
+.adminAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #2a4365;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Stats row — 4 equal columns ─────────────────────────────────────────── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* ── Mid row — alerts left (wider) + timeline right ─────────────────────── */
+.midGrid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+
+/* Tablet — 2-col stats, single-col mid */
+@media (max-width: 1024px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .midGrid   { grid-template-columns: 1fr; }
+}
+
+/* Mobile — single column everything */
+@media (max-width: 600px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .heading   { font-size: 1.375rem; }
+}
+
+@media (max-width: 400px) {
+  .statsGrid { grid-template-columns: 1fr; }
+}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Dialog, DialogPanel } from "@headlessui/react";
-import Sidebar from "./components/Sidebar";
+import AppSidebar from "../../app/components/AppSidebar/AppSidebar";
 import Topbar from "./components/Topbar";
 import styles from "./DashboardLayout.module.css";
 
@@ -28,14 +28,14 @@ export default function DashboardLayout() {
 
         <div className={styles.drawerContainer}>
           <DialogPanel transition className={styles.drawerPanel}>
-            <Sidebar onClose={() => setSidebarOpen(false)} />
+            <AppSidebar mode="user" onClose={() => setSidebarOpen(false)} />
           </DialogPanel>
         </div>
       </Dialog>
 
       {/* ── Static desktop sidebar ── */}
       <div className={styles.desktopSidebar}>
-        <Sidebar />
+        <AppSidebar mode="user" />
       </div>
 
       {/* ── Main column ── */}

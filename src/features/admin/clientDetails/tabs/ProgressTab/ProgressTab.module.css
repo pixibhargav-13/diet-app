@@ -1,0 +1,46 @@
+/* ─── ProgressTab.module.css ─────────────────────────────────────────────── */
+
+.wrap { display: flex; flex-direction: column; gap: 16px; }
+
+.chartCard {
+  background: #fff; border-radius: 14px; border: 1px solid #e5e7eb;
+  padding: 20px 22px; display: flex; flex-direction: column; gap: 16px;
+}
+
+.chartHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+.chartLabel {
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #9ca3af; margin: 0 0 10px;
+}
+
+.chartStats { display: flex; gap: 20px; flex-wrap: wrap; }
+.chartStat  { display: flex; flex-direction: column; gap: 2px; }
+.statVal    { font-size: 1.25rem; font-weight: 800; color: #2a4365; letter-spacing: -0.02em; line-height: 1; }
+.statLbl    { font-size: 0.6875rem; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.chartArea { width: 100%; }
+
+/* Tooltip */
+.tooltip {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 8px;
+  padding: 8px 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.tooltipLabel { font-size: 0.75rem; color: #9ca3af; margin: 0 0 2px; }
+.tooltipVal   { font-size: 0.9375rem; font-weight: 700; color: #2a4365; margin: 0; }
+
+/* Measurement tabs */
+.measureTabs { display: flex; background: #f3f4f6; border-radius: 8px; padding: 2px; gap: 2px; }
+.measureTab {
+  border-radius: 6px; border: none; background: none;
+  padding: 5px 12px; font-size: 0.8125rem; font-weight: 600;
+  color: #6b7280; cursor: pointer; transition: background 0.15s ease, color 0.15s ease;
+}
+.measureTab:hover    { color: #2a4365; }
+.measureTabActive    { background: #fff; color: #2a4365; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+
+/* Stat strip */
+.measureStats { display: flex; gap: 20px; padding-top: 4px; border-top: 1px solid #f3f4f6; flex-wrap: wrap; }
+.mStat  { display: flex; flex-direction: column; gap: 2px; }
+.mStatV { font-size: 1.125rem; font-weight: 800; color: #2a4365; letter-spacing: -0.02em; }
+.mStatL { font-size: 0.6875rem; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; }

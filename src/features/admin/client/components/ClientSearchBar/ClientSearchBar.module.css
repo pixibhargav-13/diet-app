@@ -1,0 +1,233 @@
+/* ─── ClientSearchBar.module.css ─────────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 18px 20px;
+  box-sizing: border-box;
+}
+
+/* ── Search + sort row ───────────────────────────────────────────────────── */
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Search input */
+.inputWrap {
+  position: relative;
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.searchInput {
+  width: 100%;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 78px 10px 38px;
+  font-size: 0.9375rem;
+  color: #1f2933;
+  outline: none;
+  box-sizing: border-box;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+.searchInput:focus {
+  border-color: #2a4365;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(42, 67, 101, 0.08);
+}
+.searchInput::-webkit-search-cancel-button {
+  display: none;
+}
+
+.clearQBadge {
+  position: absolute;
+  right: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #6b7280;
+  cursor: pointer;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.clearQBadge:hover {
+  border-color: #fca5a5;
+  background: #fdecec;
+  color: #c44545;
+}
+
+/* Sort select */
+.sortWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sortIcon {
+  position: absolute;
+  left: 10px;
+  width: 15px;
+  height: 15px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.sortSelect {
+  appearance: none;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 10px 32px 10px 32px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease;
+  min-width: 148px;
+}
+.sortSelect:focus {
+  border-color: #2a4365;
+}
+
+.sortChevron {
+  position: absolute;
+  right: 10px;
+  width: 14px;
+  height: 14px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* ── Filter dropdowns ────────────────────────────────────────────────────── */
+.filtersRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filterLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownSummary {
+  width: 100%;
+  text-align: left;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  min-width: 180px;
+  padding: 9px 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.dropdownSummary[aria-expanded="true"] {
+  border-color: #2a4365;
+}
+
+.dropdownPanel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  min-width: 220px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(17, 24, 39, 0.12);
+  padding: 8px;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  color: #374151;
+}
+
+.checkboxRow:hover {
+  background: #f3f4f6;
+}
+
+.checkboxRow input {
+  width: 14px;
+  height: 14px;
+  accent-color: #2a4365;
+}
+
+@media (max-width: 640px) {
+  .searchRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sortWrap {
+    width: 100%;
+  }
+  .sortSelect {
+    width: 100%;
+  }
+
+  .filterGroup,
+  .dropdownSummary,
+  .dropdownPanel {
+    width: 100%;
+  }
+}

@@ -1,0 +1,58 @@
+/* ─── ClientDetailPage.module.css ────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 56px;
+}
+
+/* Breadcrumb */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; }
+.bcLink     { color: #4a6fa5; text-decoration: none; font-weight: 600; transition: color 0.15s ease; }
+.bcLink:hover { color: #2a4365; }
+.bcSep      { color: #d1d5db; }
+.bcCurrent  { color: #1f2933; font-weight: 700; }
+
+/* ── Tab bar ─────────────────────────────────────────────────────────────── */
+.tabBar {
+  display: flex;
+  gap: 0;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 5px 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  flex-wrap: nowrap;
+}
+.tabBar::-webkit-scrollbar { display: none; }
+
+.tabBtn {
+  border: none;
+  background: none;
+  border-radius: 10px;
+  padding: 9px 18px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #6b7280;   /* inactive: #6B7280 as spec'd */
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tabBtn:hover       { background: #f9fafb; color: #2a4365; }
+.tabBtnActive       { background: #2a4365; color: #ffffff; }  /* active: #2A4365 as spec'd */
+
+/* ── Tab panel ───────────────────────────────────────────────────────────── */
+.tabPanel { min-height: 300px; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .tabBtn { padding: 8px 13px; font-size: 0.875rem; }
+}

@@ -1,0 +1,62 @@
+/* ─── NotesTab.module.css ────────────────────────────────────────────────── */
+
+.wrap { display: flex; flex-direction: column; gap: 16px; }
+
+/* Add note card */
+.addCard {
+  background: #fff; border-radius: 14px; border: 1px solid #e5e7eb;
+  padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;
+}
+.addLabel {
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #9ca3af; margin: 0;
+}
+.addTextarea {
+  border-radius: 10px; border: 1.5px solid #e5e7eb; background: #f9fafb;
+  padding: 10px 13px; font-size: 0.9375rem; color: #1f2933; outline: none;
+  resize: vertical; font-family: inherit; line-height: 1.6;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.addTextarea:focus { border-color: #2a4365; background: #fff; box-shadow: 0 0 0 3px rgba(42,67,101,0.07); }
+.saveBtn {
+  border-radius: 10px; background: #2a4365; border: none;
+  padding: 10px 20px; font-size: 0.875rem; font-weight: 700; color: #fff;
+  cursor: pointer; width: fit-content; transition: background 0.15s ease;
+}
+.saveBtn:hover:not(:disabled) { background: #4a6fa5; }
+.saveBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Compliance mini-chart */
+.complianceStrip {
+  background: #fff; border-radius: 14px; border: 1px solid #e5e7eb;
+  padding: 16px 20px; display: flex; flex-direction: column; gap: 12px;
+}
+.stripLabel {
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #9ca3af; margin: 0;
+}
+.stripBars { display: flex; align-items: flex-end; gap: 10px; height: 60px; }
+.stripItem { display: flex; flex-direction: column; align-items: center; gap: 3px; flex: 1; }
+.stripBar  { width: 100%; max-width: 32px; border-radius: 4px 4px 0 0; transition: height 0.4s ease; }
+.stripVal  { font-size: 0.625rem; font-weight: 700; color: #6b7280; }
+
+/* Notes list */
+.notesList { display: flex; flex-direction: column; gap: 10px; }
+
+.noteCard {
+  background: #fff; border-radius: 14px; border: 1px solid #e5e7eb;
+  padding: 18px 20px; display: flex; flex-direction: column; gap: 10px;
+  border-left: 3px solid #2a4365;
+}
+
+.noteHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.noteLeft   { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.noteDate   { font-size: 0.875rem; font-weight: 700; color: #4b5563; }
+.noteAuthor { font-size: 0.8125rem; color: #9ca3af; }
+
+.compBadge  { font-size: 0.75rem; font-weight: 700; border-radius: 999px; padding: 4px 10px; flex-shrink: 0; }
+.compHigh   { background: #f0fdf4; color: #4a7c59; }
+.compMed    { background: #fff8e1; color: #92700a; }
+.compLow    { background: #fdecec; color: #c44545; }
+
+.noteBody   { font-size: 0.9375rem; color: #4b5563; line-height: 1.7; margin: 0; }

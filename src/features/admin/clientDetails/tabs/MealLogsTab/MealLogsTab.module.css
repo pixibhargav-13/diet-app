@@ -1,0 +1,92 @@
+/* ─── MealLogsTab.module.css ─────────────────────────────────────────────── */
+
+.wrap { display: flex; flex-direction: column; gap: 20px; }
+
+.filterBar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.dateWrap { position: relative; display: flex; align-items: center; }
+.dateIcon { position: absolute; left: 10px; color: #9ca3af; pointer-events: none; }
+.dateInput {
+  border-radius: 8px; border: 1.5px solid #e5e7eb; background: #f9fafb;
+  padding: 8px 12px 8px 30px; font-size: 0.875rem; color: #1f2933; outline: none;
+  transition: border-color 0.15s ease;
+}
+.dateInput:focus { border-color: #2a4365; }
+
+.clearDate {
+  background: none; border: none; font-size: 0.8125rem; font-weight: 600;
+  color: #c44545; cursor: pointer; padding: 4px 8px; border-radius: 6px;
+  transition: background 0.15s ease;
+}
+.clearDate:hover { background: #fdecec; }
+
+.logCount { font-size: 0.8125rem; color: #9ca3af; margin-left: auto; }
+
+/* Day groups */
+.dayGroup { display: flex; flex-direction: column; gap: 10px; }
+.dayLabel { font-size: 0.8125rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.06em; margin: 0; }
+
+.cardGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+/* Log card */
+.logCard {
+  background: #fff; border-radius: 12px; border: 1px solid #e5e7eb;
+  overflow: hidden; display: flex; flex-direction: column;
+}
+
+.photoWrap {
+  aspect-ratio: 16/9; position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.photoIcon { width: 36px; height: 36px; }
+
+.reviewedBadge {
+  position: absolute; top: 6px; right: 6px;
+  display: flex; align-items: center; gap: 4px;
+  background: rgba(74,124,89,0.9); color: #fff;
+  font-size: 0.6875rem; font-weight: 700; border-radius: 6px; padding: 3px 7px;
+}
+
+.logInfo { padding: 12px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+
+.logTopRow { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+
+.slotBadge { font-size: 0.6875rem; font-weight: 700; border-radius: 6px; padding: 3px 8px; color: #4b5563; }
+.logKcal   { font-size: 0.75rem; font-weight: 700; color: #9ca3af; }
+.logMeal   { font-size: 0.875rem; font-weight: 700; color: #111827; margin: 0; }
+
+/* Comment area */
+.commentView { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; }
+.commentText { font-size: 0.8125rem; color: #4b5563; margin: 0; font-style: italic; flex: 1; }
+.commentPlaceholder { font-size: 0.8125rem; color: #d1d5db; margin: 0; flex: 1; }
+
+.editCmt {
+  background: none; border: none; font-size: 0.75rem; font-weight: 600;
+  color: #4a6fa5; cursor: pointer; padding: 0; flex-shrink: 0;
+  transition: color 0.15s ease;
+}
+.editCmt:hover { color: #2a4365; }
+
+.commentEdit { display: flex; flex-direction: column; gap: 6px; }
+.commentInput {
+  border-radius: 8px; border: 1.5px solid #2a4365; background: #fff;
+  padding: 7px 10px; font-size: 0.8125rem; color: #1f2933; outline: none;
+  resize: none; font-family: inherit;
+}
+
+.commentActions { display: flex; gap: 6px; }
+.saveCmt {
+  border-radius: 6px; background: #2a4365; border: none;
+  padding: 5px 12px; font-size: 0.75rem; font-weight: 700; color: #fff; cursor: pointer;
+  transition: background 0.15s ease;
+}
+.saveCmt:hover { background: #4a6fa5; }
+.cancelCmt {
+  border-radius: 6px; background: none; border: 1px solid #e5e7eb;
+  padding: 5px 10px; font-size: 0.75rem; font-weight: 600; color: #6b7280; cursor: pointer;
+}
+
+.empty { font-size: 0.875rem; color: #9ca3af; text-align: center; padding: 40px 0; margin: 0; }
+
+@media (max-width: 900px) { .cardGrid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .cardGrid { grid-template-columns: 1fr; } }

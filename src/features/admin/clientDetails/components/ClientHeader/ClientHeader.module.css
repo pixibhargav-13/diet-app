@@ -1,0 +1,123 @@
+/* ─── ClientHeader.module.css ────────────────────────────────────────────── */
+
+.header {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 24px 28px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.left {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Avatar */
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #2a4365;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: -0.02em;
+}
+.avatarInactive { background: #d4a72c; }
+
+/* Info */
+.info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 7px; }
+
+.nameRow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.name {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.025em;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.inactiveBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #c44545;
+  background: #fdecec;
+  border: 1px solid #fca5a5;
+  border-radius: 999px;
+  padding: 3px 10px;
+  flex-shrink: 0;
+}
+
+.email { font-size: 0.875rem; color: #9ca3af; margin: 0; }
+
+/* Chips */
+.chips { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+.chip {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 0.8125rem; font-weight: 600; color: #4b5563;
+  background: #f3f4f6; border-radius: 8px; padding: 4px 10px;
+}
+.chipIcon { color: #6b7280; flex-shrink: 0; }
+
+.subChip {
+  font-size: 0.75rem; font-weight: 700; border-radius: 999px; padding: 4px 10px;
+}
+.premium  { background: #eef4fa; color: #2a4365; }
+.standard { background: #f3f4f6; color: #4b5563; }
+.trial    { background: #fff8e1; color: #92700a; }
+.expired  { background: #fdecec; color: #c44545; }
+
+.compChip {
+  font-size: 0.75rem; font-weight: 700; border-radius: 999px; padding: 4px 10px;
+}
+.high   { background: #f0fdf4; color: #4a7c59; }
+.medium { background: #fff8e1; color: #92700a; }
+.low    { background: #fdecec; color: #c44545; }
+
+/* Meta line */
+.meta { font-size: 0.8125rem; color: #6b7280; margin: 0; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.metaDot { width: 3px; height: 3px; border-radius: 50%; background: #d1d5db; flex-shrink: 0; }
+.metaAlert { color: #c44545; font-weight: 600; }
+
+/* Actions */
+.actions { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+
+.assignBtn {
+  display: flex; align-items: center; gap: 7px;
+  border-radius: 10px; background: #2a4365; border: none;
+  padding: 10px 18px; font-size: 0.875rem; font-weight: 700;
+  color: #fff; cursor: pointer; white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.assignBtn:hover { background: #4a6fa5; }
+
+.waBtn {
+  display: flex; align-items: center; gap: 7px;
+  border-radius: 10px; background: #25d366; border: none;
+  padding: 10px 18px; font-size: 0.875rem; font-weight: 700;
+  color: #fff; cursor: pointer; white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.waBtn:hover { background: #1ebe5d; }
+
+@media (max-width: 640px) {
+  .header { flex-direction: column; }
+  .actions { flex-direction: row; flex-wrap: wrap; }
+  .name { font-size: 1.25rem; }
+}

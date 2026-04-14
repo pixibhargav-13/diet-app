@@ -1,0 +1,87 @@
+/* ─── DocumentsTab.module.css ────────────────────────────────────────────── */
+
+.wrap { display: flex; flex-direction: column; gap: 16px; }
+
+.filterRow { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.catChip {
+  display: flex; align-items: center; gap: 5px;
+  border-radius: 999px; border: 1.5px solid #e5e7eb; background: #f9fafb;
+  padding: 5px 13px; font-size: 0.8125rem; font-weight: 600; color: #6b7280;
+  cursor: pointer; transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+.catChip:hover  { border-color: #2a4365; color: #2a4365; background: #eef4fa; }
+.catChipActive  { border-color: #2a4365; background: #2a4365; color: #fff; }
+
+.catCount {
+  background: rgba(255,255,255,0.2); border-radius: 999px;
+  padding: 1px 6px; font-size: 0.6875rem; font-weight: 700;
+}
+.catChip:not(.catChipActive) .catCount { background: #e5e7eb; color: #6b7280; }
+
+/* Doc list */
+.docList {
+  display: flex; flex-direction: column;
+  background: #fff; border-radius: 14px; border: 1px solid #e5e7eb; overflow: hidden;
+}
+
+.docRow {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 18px; border-bottom: 1px solid #f3f4f6;
+  flex-wrap: wrap; position: relative;
+}
+.docRow:last-child { border-bottom: none; }
+
+/* Doc icon */
+.docIconWrap {
+  width: 38px; height: 38px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.docIconWrap svg { width: 18px; height: 18px; }
+
+.blood { background: #fdecec; color: #c44545; }
+.rx    { background: #eef4fa; color: #2a4365; }
+.lab   { background: #f5f0ff; color: #6b47c8; }
+
+/* Doc info */
+.docInfo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.docName { font-size: 0.9375rem; font-weight: 700; color: #111827; }
+.docMeta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.docCatBadge { font-size: 0.6875rem; font-weight: 700; border-radius: 6px; padding: 2px 7px; }
+.docDate  { font-size: 0.8125rem; color: #9ca3af; }
+.docSize  { font-size: 0.8125rem; color: #9ca3af; }
+
+/* Actions */
+.docActions { display: flex; gap: 6px; flex-shrink: 0; }
+
+.viewBtn {
+  display: flex; align-items: center; gap: 5px;
+  border-radius: 8px; border: 1.5px solid #e5e7eb; background: #fff;
+  padding: 6px 12px; font-size: 0.8125rem; font-weight: 600; color: #4b5563;
+  cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease;
+}
+.viewBtn:hover { border-color: #2a4365; color: #2a4365; }
+
+.downloadBtn {
+  display: flex; align-items: center; gap: 5px;
+  border-radius: 8px; background: #2a4365; border: none;
+  padding: 6px 12px; font-size: 0.8125rem; font-weight: 600; color: #fff;
+  cursor: pointer; transition: background 0.15s ease;
+}
+.downloadBtn:hover { background: #4a6fa5; }
+
+/* Preview pane */
+.previewPane {
+  width: 100%; margin-top: 10px;
+  background: #f9fafb; border-radius: 10px; border: 1px solid #e5e7eb;
+  padding: 24px;
+}
+.previewPlaceholder {
+  display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;
+  color: #9ca3af;
+}
+.previewPlaceholder svg { width: 32px; height: 32px; }
+.previewPlaceholder p   { margin: 0; font-size: 0.875rem; }
+.previewNote { font-size: 0.75rem !important; }
+
+.empty { font-size: 0.875rem; color: #9ca3af; text-align: center; padding: 40px 0; margin: 0; }

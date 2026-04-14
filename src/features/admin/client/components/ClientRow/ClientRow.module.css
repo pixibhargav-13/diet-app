@@ -1,0 +1,217 @@
+/* ─── ClientRow.module.css ───────────────────────────────────────────────── */
+
+.row {
+  display: grid;
+  /* avatar | name+email | goal | health issue | last active | actions */
+  grid-template-columns: 44px 1fr 130px 150px 120px 100px;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+  transition: background 0.12s ease;
+  box-sizing: border-box;
+}
+
+.row:hover {
+  background: #f9fafb;
+}
+.row:focus-visible {
+  outline: 2px solid #2a4365;
+  outline-offset: -2px;
+}
+.row:last-child {
+  border-bottom: none;
+}
+.rowInactive {
+  background: #fffbf5;
+}
+.rowInactive:hover {
+  background: #fff8e1;
+}
+
+/* Avatar col */
+.avatarCol {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #2a4365;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatarInactive {
+  background: #d4a72c;
+}
+
+.inactiveDot {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c44545;
+  border: 2px solid #fff;
+}
+
+/* Name col */
+.nameCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.inactiveBadge {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #c44545;
+  background: #fdecec;
+  border: 1px solid #fca5a5;
+  border-radius: 999px;
+  padding: 1px 7px;
+  flex-shrink: 0;
+}
+
+.email {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Goal col */
+.goalCol {
+  min-width: 0;
+}
+.goal {
+  font-size: 0.875rem;
+  color: #4b5563;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Health issue col */
+.issueCol {
+  min-width: 0;
+}
+
+.issueBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: #f3f4f6;
+  color: #4b5563;
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Last active col */
+.lastActive {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+.lastActiveAlert {
+  color: #c44545;
+  font-weight: 600;
+}
+
+/* Actions col */
+.actionsCol {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.actionBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #fff;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background 0.15s ease;
+}
+.actionBtn:hover {
+  border-color: #2a4365;
+  color: #2a4365;
+  background: #eef4fa;
+}
+
+.actionBtnWhatsapp:hover {
+  border-color: #25d366;
+  color: #25d366;
+  background: #f0fdf4;
+}
+
+/* ── Responsive — collapse to card layout on tablet ─────────────────────── */
+@media (max-width: 1024px) {
+  .row {
+    grid-template-columns: 44px 1fr 100px 120px 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 44px 1fr auto auto;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+  .goalCol {
+    display: none;
+  }
+  .issueCol {
+    display: none;
+  }
+  .activeCol {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .row {
+    grid-template-columns: 44px 1fr auto;
+  }
+  .actionsCol .actionBtn:not(:first-child) {
+    display: none;
+  }
+}

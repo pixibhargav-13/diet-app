@@ -1,0 +1,181 @@
+/* ─── ClientListPage.module.css ──────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 48px;
+}
+
+/* ── Page header ─────────────────────────────────────────────────────────── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.kicker {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin: 0 0 4px;
+}
+
+.heading {
+  font-size: 1.625rem;
+  font-weight: 900;
+  color: #111827;
+  letter-spacing: -0.025em;
+  margin: 0 0 3px;
+}
+
+.sub {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.inactiveCount {
+  color: #c44545;
+  font-weight: 600;
+}
+
+.addClientBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 10px;
+  background: #2a4365;
+  border: none;
+  padding: 10px 18px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+.addClientBtn:hover {
+  background: #4a6fa5;
+}
+
+/* ── Results meta ────────────────────────────────────────────────────────── */
+.resultsMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 2px;
+}
+
+.resultsCount {
+  font-size: 0.8125rem;
+  color: #6b7280;
+}
+
+.filteringNote {
+  font-size: 0.8125rem;
+  color: #4a6fa5;
+  font-weight: 600;
+}
+
+/* ── Table ───────────────────────────────────────────────────────────────── */
+.tableWrap {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+/* Column headers — mirror ClientRow grid */
+.tableHead {
+  display: grid;
+  grid-template-columns: 44px 1fr 130px 150px 120px 100px;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 20px;
+  background: #f9fafb;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.thAvatar {
+}
+
+.th {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.thActions {
+}
+
+.tbody {
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 24px;
+  gap: 10px;
+}
+
+.emptyIcon {
+  width: 40px;
+  height: 40px;
+  color: #d1d5db;
+}
+
+.emptyTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #6b7280;
+  margin: 0;
+}
+
+.emptyDesc {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* ── Responsive — header hides in sync with ClientRow ───────────────────── */
+@media (max-width: 1024px) {
+  .tableHead {
+    grid-template-columns: 44px 1fr 100px 120px 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tableHead {
+    grid-template-columns: 44px 1fr auto auto;
+  }
+  .tableHead > :nth-child(3),
+  .tableHead > :nth-child(4),
+  .tableHead > :nth-child(5) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .tableHead {
+    display: none;
+  }
+  .tableWrap {
+    border-radius: 12px;
+  }
+}

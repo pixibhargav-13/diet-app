@@ -119,6 +119,47 @@
   cursor: not-allowed;
 }
 
+.demoCard {
+  border: 1px solid #dbe7f4;
+  background: #f7fbff;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.demoTitle {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.demoRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.demoBtn {
+  border: 1px solid #c6d8ee;
+  background: #ffffff;
+  color: #2a4365;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.demoBtn:hover {
+  background: #eef4fa;
+}
+
+.demoHint {
+  margin: 9px 0 0;
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
 .footer {
   margin-top: 24px;
   text-align: center;
@@ -145,5 +186,9 @@
 
   .heading {
     font-size: 1.5rem;
+  }
+
+  .demoRow {
+    flex-direction: column;
   }
 }

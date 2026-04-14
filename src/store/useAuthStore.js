@@ -1,6 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import demoUser from "./newUser";
+import demoUser, { adminDemoUser } from "./newUser";
+
+function sanitizeDemoUser(account) {
+  const userSafe = { ...account };
+  delete userSafe.password;
+  return userSafe;
+}
 
 export const useAuthStore = create(
   persist(
@@ -23,6 +29,7 @@ export const useAuthStore = create(
             email,
             createdAt: new Date().toISOString(),
             onboardingComplete: false,
+            role: "user",
           };
           set({ user, isAuthenticated: true, isLoading: false, error: null });
           return { success: true, user };
@@ -39,10 +46,13 @@ export const useAuthStore = create(
         try {
           await new Promise((r) => setTimeout(r, 400));
 
-          if (email === demoUser.email && password === demoUser.password) {
-            const userSafe = { ...demoUser };
-            delete userSafe.password;
-            const user = { ...userSafe, onboardingComplete: true };
+          const matchedAccount = [demoUser, adminDemoUser].find(
+            (account) =>
+              account.email === email && account.password === password,
+          );
+
+          if (matchedAccount) {
+            const user = sanitizeDemoUser(matchedAccount);
             set({ user, isAuthenticated: true, isLoading: false, error: null });
             return { success: true, user };
           }

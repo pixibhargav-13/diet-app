@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useAuthStore } from "../../../store/useAuthStore";
+import { adminDemoUser, demoUser } from "../../../store/newUser";
 import { toastLoginSuccess, toastLoginError } from "../../../utils/Toast";
 import FormField from "../useForm/FormField";
 import PasswordField from "../useForm/PasswordField";
@@ -14,6 +15,7 @@ export default function LoginPage() {
     handleSubmit,
     clearErrors,
     setError,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm({
     mode: "onTouched",
@@ -46,20 +48,43 @@ export default function LoginPage() {
     }
   };
 
+  const autofillDemo = (account) => {
+    setValue("email", account.email, { shouldDirty: true, shouldTouch: true });
+    setValue("password", account.password, {
+      shouldDirty: true,
+      shouldTouch: true,
+    });
+    clearErrors("root");
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles.card}>
         <div className={styles.header}>
           <Link to="/" className={styles.logoLink} aria-label="Back to home">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={styles.backIcon}>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className={styles.backIcon}
+            >
               <path d="M19 12H5M12 5l-7 7 7 7" />
             </svg>
           </Link>
           <h1 className={styles.heading}>Welcome back</h1>
-          <p className={styles.subtext}>Sign in to continue your health journey.</p>
+          <p className={styles.subtext}>
+            Sign in to continue your health journey.
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.form}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+          className={styles.form}
+        >
           {errors.root?.message ? (
             <p role="alert">{errors.root.message}</p>
           ) : null}
@@ -71,9 +96,12 @@ export default function LoginPage() {
             placeholder="jane@example.com"
             required
             autoComplete="email"
-            registration={register('email', {
-              required: 'Email is required',
-              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Enter a valid email address' },
+            registration={register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email address",
+              },
             })}
             error={errors.email}
           />
@@ -83,27 +111,58 @@ export default function LoginPage() {
               id="password"
               label="Password"
               autoComplete="current-password"
-              registration={register('password', {
-                required: 'Password is required',
-                minLength: { value: 8, message: 'At least 8 characters' },
+              registration={register("password", {
+                required: "Password is required",
+                minLength: { value: 8, message: "At least 8 characters" },
               })}
               error={errors.password}
             />
             <div className={styles.forgotRow}>
-              <Link to="/forgot-password" className={styles.forgotLink}>Forgot password?</Link>
+              <Link to="/forgot-password" className={styles.forgotLink}>
+                Forgot password?
+              </Link>
             </div>
           </div>
 
-          <button type="submit" disabled={isSubmitting} className={styles.submitBtn}>
-            {isSubmitting ? 'Signing in…' : 'Sign in'}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={styles.submitBtn}
+          >
+            {isSubmitting ? "Signing in…" : "Sign in"}
           </button>
+
+          <div className={styles.demoCard}>
+            <p className={styles.demoTitle}>Demo accounts</p>
+            <div className={styles.demoRow}>
+              <button
+                type="button"
+                className={styles.demoBtn}
+                onClick={() => autofillDemo(demoUser)}
+              >
+                Use User Demo
+              </button>
+              <button
+                type="button"
+                className={styles.demoBtn}
+                onClick={() => autofillDemo(adminDemoUser)}
+              >
+                Use Admin Demo
+              </button>
+            </div>
+            <p className={styles.demoHint}>
+              Admin credentials: admin@example.com / admin12345
+            </p>
+          </div>
         </form>
 
         <p className={styles.footer}>
-          Don&apos;t have an account?{' '}
-          <Link to="/signup" className={styles.footerLink}>Create one</Link>
+          Don&apos;t have an account?{" "}
+          <Link to="/signup" className={styles.footerLink}>
+            Create one
+          </Link>
         </p>
       </div>
     </div>
-  )
+  );
 }

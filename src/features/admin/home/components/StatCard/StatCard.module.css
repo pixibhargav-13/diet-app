@@ -1,0 +1,87 @@
+/* ─── StatCard.module.css ────────────────────────────────────────────────── */
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+  transition: box-shadow 0.15s ease;
+}
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+
+/* Tone variants */
+.alert   { border-color: #fca5a5; background: #fdecec; }
+.warn    { border-color: #fde68a; background: #fff8e1; }
+.success { border-color: #bbf7d0; background: #f0fdf4; }
+
+/* Top row */
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Icon wrap */
+.iconWrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #eef4fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2a4365;
+  flex-shrink: 0;
+}
+
+.iconWrap svg { width: 20px; height: 20px; }
+
+.icon_alert   { background: #fdecec; color: #c44545; }
+.icon_warn    { background: #fff8e1; color: #d4a72c; }
+.icon_success { background: #f0fdf4; color: #4a7c59; }
+
+/* Alert dot */
+.alertDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c44545;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* Body */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #2a4365;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.sub {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* Tone text overrides */
+.alert .value   { color: #c44545; }
+.warn  .value   { color: #d4a72c; }
+.success .value { color: #4a7c59; }
