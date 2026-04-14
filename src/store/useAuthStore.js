@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import demoUser from "./newUser";
+import demoUser, { adminUser } from "./newUser";
 
 export const useAuthStore = create(
   persist(
@@ -38,6 +38,13 @@ export const useAuthStore = create(
         set({ isLoading: true, error: null });
         try {
           await new Promise((r) => setTimeout(r, 400));
+
+          if (email === adminUser.email && password === adminUser.password) {
+            const userSafe = { ...adminUser };
+            delete userSafe.password;
+            set({ user: userSafe, isAuthenticated: true, isLoading: false, error: null });
+            return { success: true, user: userSafe };
+          }
 
           if (email === demoUser.email && password === demoUser.password) {
             const userSafe = { ...demoUser };

@@ -10,6 +10,11 @@ export default function GuestRoute({ children }) {
 
   if (!isAuthenticated) return children;
 
+  // Admin users always go to /admin
+  if (user?.role === 'admin') {
+    return <Navigate to="/admin" replace />;
+  }
+
   if (user?.onboardingComplete && from) {
     return <Navigate to={from} replace />;
   }

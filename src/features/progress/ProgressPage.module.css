@@ -121,3 +121,16 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* ── Bottom row (StepCard + WeeklySummary) ───────────────────────────────── */
+.bottomRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+@media (min-width: 640px) {
+    .bottomRow {
+        grid-template-columns: 1fr 1fr;
+    }
+}

@@ -23,6 +23,7 @@ export default function LogMealEntryPage() {
   const [protein, setProtein] = useState('')
   const [carbs, setCarbs] = useState('')
   const [fat, setFat] = useState('')
+  const [fiber, setFiber] = useState('')
   const [errors, setErrors] = useState({})
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
@@ -54,11 +55,12 @@ export default function LogMealEntryPage() {
     if (protein && Number(protein) < 0) e.protein = 'Protein cannot be negative'
     if (carbs && Number(carbs) < 0) e.carbs = 'Carbs cannot be negative'
     if (fat && Number(fat) < 0) e.fat = 'Fat cannot be negative'
+    if (fiber && Number(fiber) < 0) e.fiber = 'Fiber cannot be negative'
     return e
-  }, [mealName, kcal, protein, carbs, fat])
+  }, [mealName, kcal, protein, carbs, fat, fiber])
 
   const handleCancel = useCallback(() => {
-    setMealName(''); setMealType('Lunch'); setKcal(''); setProtein(''); setCarbs(''); setFat('')
+    setMealName(''); setMealType('Lunch'); setKcal(''); setProtein(''); setCarbs(''); setFat(''); setFiber('')
     setErrors({}); setSubmitted(false)
     handlePhotoSelect(null)
   }, [handlePhotoSelect])
@@ -76,6 +78,7 @@ export default function LogMealEntryPage() {
         protein,
         carbs,
         fat,
+        fiber,
         source: 'Manual Log Entry',
       })
 
@@ -208,6 +211,23 @@ export default function LogMealEntryPage() {
                   className={`${styles.input} ${errors.fat ? styles.inputError : ''}`}
                 />
                 {errors.fat ? <p className={styles.errorMsg}>{errors.fat}</p> : null}
+              </div>
+
+              <div className={styles.field}>
+                <label htmlFor="meal-fiber" className={styles.label}>Fiber (g)</label>
+                <input
+                  id="meal-fiber"
+                  type="number"
+                  min="0"
+                  value={fiber}
+                  onChange={(e) => {
+                    setFiber(e.target.value)
+                    setErrors((err) => ({ ...err, fiber: undefined }))
+                  }}
+                  placeholder="e.g., 5"
+                  className={`${styles.input} ${errors.fiber ? styles.inputError : ''}`}
+                />
+                {errors.fiber ? <p className={styles.errorMsg}>{errors.fiber}</p> : null}
               </div>
             </div>
 

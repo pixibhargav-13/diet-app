@@ -53,9 +53,10 @@ export default function NutritionAnalysisPage() {
         acc.protein += Number(meal.protein) || 0
         acc.carbs += Number(meal.carbs) || 0
         acc.fat += Number(meal.fat) || 0
+        acc.fiber += Number(meal.fiber) || 0
         return acc
       },
-      { kcal: 0, protein: 0, carbs: 0, fat: 0 }
+      { kcal: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }
     )
   }, [plan])
 
@@ -66,9 +67,10 @@ export default function NutritionAnalysisPage() {
         acc.protein += Number(log.protein) || 0
         acc.carbs += Number(log.carbs) || 0
         acc.fat += Number(log.fat) || 0
+        acc.fiber += Number(log.fiber) || 0
         return acc
       },
-      { kcal: 0, protein: 0, carbs: 0, fat: 0 }
+      { kcal: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }
     ),
     [logs]
   )
@@ -78,6 +80,7 @@ export default function NutritionAnalysisPage() {
       { name: 'Protein', consumed: consumedTotals.protein, goal: macroGoals.protein, color: '#2a4365' },
       { name: 'Carbohydrates', consumed: consumedTotals.carbs, goal: macroGoals.carbs, color: '#4a6fa5' },
       { name: 'Fats', consumed: consumedTotals.fat, goal: macroGoals.fat, color: '#7faad6' },
+      { name: 'Fiber', consumed: consumedTotals.fiber, goal: macroGoals.fiber || 25, color: '#52a878' },
     ],
     [consumedTotals, macroGoals]
   )
@@ -132,6 +135,7 @@ export default function NutritionAnalysisPage() {
       `Nutrition Summary - ${date}`,
       `Calories: ${consumedTotals.kcal.toLocaleString()} / ${macroGoals.kcal.toLocaleString()} kcal`,
       ...macros.map((m) => `${m.name}: ${m.consumed}g / ${m.goal}g`),
+      `Fiber: ${consumedTotals.fiber}g / ${macroGoals.fiber || 25}g`,
     ].join('\n')
     navigator.clipboard.writeText(text)
   }

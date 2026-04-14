@@ -54,7 +54,7 @@ function createLogFromPlanMeal({ date, meal, source }) {
     };
 }
 
-function createCustomLog({ date, mealName, mealType, kcal, protein, carbs, fat, source }) {
+function createCustomLog({ date, mealName, mealType, kcal, protein, carbs, fat, fiber, source }) {
     const now = new Date();
 
     return {
@@ -68,6 +68,7 @@ function createCustomLog({ date, mealName, mealType, kcal, protein, carbs, fat, 
         protein: asNumber(protein),
         carbs: asNumber(carbs),
         fat: asNumber(fat),
+        fiber: asNumber(fiber),
     };
 }
 
@@ -94,9 +95,10 @@ function collectDaySummary(logs = []) {
             summary.protein += asNumber(item.protein);
             summary.carbs += asNumber(item.carbs);
             summary.fat += asNumber(item.fat);
+            summary.fiber += asNumber(item.fiber);
             return summary;
         },
-        { consumedKcal: 0, protein: 0, carbs: 0, fat: 0 }
+        { consumedKcal: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }
     );
 }
 
@@ -183,7 +185,7 @@ export const useNutritionStore = create(
                 return get().quickLogPlannedMeal(date, meal.id, source);
             },
 
-            logCustomMeal: ({ mealName, mealType, kcal, protein, carbs, fat, source = "Manual Log" }) => {
+            logCustomMeal: ({ mealName, mealType, kcal, protein, carbs, fat, fiber, source = "Manual Log" }) => {
                 const name = mealName?.trim();
                 const type = mealType?.trim();
                 if (!name || !type) return { ok: false, reason: "INVALID_INPUT" };
@@ -197,6 +199,7 @@ export const useNutritionStore = create(
                     protein,
                     carbs,
                     fat,
+                    fiber,
                     source,
                 });
 

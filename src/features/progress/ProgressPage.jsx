@@ -7,6 +7,9 @@ import { WeightChart } from './components/WeightChart/WeightChart'
 import { MeasurementChart } from './components/MeasurementChart/MeasurementChart'
 import { SummaryCard } from './components/SummaryCard/SummaryCard'
 import { LogModal } from './components/LogModal/LogModal'
+import StepCard from './components/StepCard/StepCard'
+import WeeklySummary from './components/WeeklySummary/WeeklySummary'
+import { useStepStore } from '../../store/useStepStore'
 import { toastSaved } from '../../utils/Toast'
 import styles from './ProgressPage.module.css'
 
@@ -37,6 +40,11 @@ export default function ProgressPage() {
     addEntry: addMeasureEntry,
   } = useMeasurements()
 
+  const stepEntries = useStepStore((s) => s.entries)
+  const addStepEntry = useStepStore((s) => s.addEntry)
+  const todaySteps = useStepStore((s) => s.getTodaySteps())
+  const weeklyAvgSteps = useStepStore((s) => s.getWeeklyAvg())
+
   const handleOpenModal = useCallback(() => {
     setModalOpen(true)
   }, [])
@@ -60,6 +68,10 @@ export default function ProgressPage() {
         addMeasureEntry(type, { date: entry.date, value: numericValue })
       }
     })
+
+    if (Number.isFinite(entry.steps) && entry.steps > 0) {
+      addStepEntry(entry.date, entry.steps)
+    }
 
     toastSaved()
   }, [addMeasureEntry, addWeightEntry])
@@ -114,6 +126,21 @@ export default function ProgressPage() {
         measurementType={selectedType}
         measurementDelta={delta}
       />
+
+      {/* Step count + weekly summary row */}
+      <div className={styles.bottomRow}>
+        <StepCard
+          todaySteps={todaySteps}
+          weeklyAvg={weeklyAvgSteps}
+          entries={stepEntries}
+        />
+        <WeeklySummary
+          weightChange={stats.change ?? 0}
+          avgSteps={weeklyAvgSteps}
+          measurementDelta={delta ?? 0}
+          measurementType={selectedType}
+        />
+      </div>
 
       {/* FAB — mobile only */}
       <button type="button" onClick={handleOpenModal} className={styles.fab} aria-label="Log new entry">

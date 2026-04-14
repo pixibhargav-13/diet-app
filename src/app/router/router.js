@@ -2,6 +2,7 @@ import { Suspense, createElement, lazy } from "react";
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import GuestRoute from "./GuestRoute";
+import AdminRoute from "./AdminRoute";
 
 const LandingPage = lazy(() => import("../../features/landing/pages/LandingPage"));
 const SignUpPage = lazy(() => import("../../features/auth/signup/SignUpPage"));
@@ -34,6 +35,13 @@ const ShopPage = lazy(() => import("../../features/shop/ShopPage"));
 const ProductDetailPage = lazy(() => import("../../features/shop/ProductDetailPage"));
 const CheckoutPage = lazy(() => import("../../features/shop/CheckoutPage"));
 const NotFound = lazy(() => import("../../features/errors/NotFound"));
+const AdminLayout = lazy(() => import("../../features/admin/AdminLayout"));
+const AdminDashboard = lazy(() => import("../../features/admin/pages/AdminDashboard"));
+const ClientManagement = lazy(() => import("../../features/admin/pages/ClientManagement"));
+const DietPlanManagement = lazy(() => import("../../features/admin/pages/DietPlanManagement"));
+const StoreInventory = lazy(() => import("../../features/admin/pages/StoreInventory"));
+const RevenuePayments = lazy(() => import("../../features/admin/pages/RevenuePayments"));
+const SchedulingConsultations = lazy(() => import("../../features/admin/pages/SchedulingConsultations"));
 
 function withSuspense(element) {
     return createElement(Suspense, { fallback: null }, element);
@@ -115,6 +123,19 @@ export const router = createBrowserRouter([
             { path: "shop", element: routeElement(ShopPage) },
             { path: "shop/:productId", element: routeElement(ProductDetailPage) },
             { path: "shop/checkout", element: routeElement(CheckoutPage) },
+        ],
+    },
+
+    {
+        path: "/admin",
+        element: wrapRoute(AdminRoute, routeElement(AdminLayout)),
+        children: [
+            { index: true,          element: routeElement(AdminDashboard) },
+            { path: "clients",      element: routeElement(ClientManagement) },
+            { path: "diet-plans",   element: routeElement(DietPlanManagement) },
+            { path: "store",        element: routeElement(StoreInventory) },
+            { path: "revenue",      element: routeElement(RevenuePayments) },
+            { path: "scheduling",   element: routeElement(SchedulingConsultations) },
         ],
     },
 

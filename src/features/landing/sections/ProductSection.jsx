@@ -6,6 +6,13 @@ import prodcut3 from "../../../assets/products/product-3.webp";
 import prodcut4 from "../../../assets/products/product-4.webp";
 import prodcut5 from "../../../assets/products/product-5.webp";
 
+const USD_TO_INR = 83;
+const formatINR = new Intl.NumberFormat("en-IN", {
+  style: "currency",
+  currency: "INR",
+  maximumFractionDigits: 0,
+});
+
 const products = [
   {
     id: 1,
@@ -13,7 +20,7 @@ const products = [
     category: "Supplements",
     imageSrc: prodcut1,
     imageAlt: "Omega-3 fish oil supplement capsules",
-    price: "$28",
+    priceUSD: 28,
     rating: 5,
     reviewCount: 124,
   },
@@ -23,7 +30,7 @@ const products = [
     category: "Protein",
     imageSrc: prodcut2,
     imageAlt: "Vanilla whey protein powder tub",
-    price: "$54",
+    priceUSD: 54,
     rating: 4,
     reviewCount: 87,
   },
@@ -33,7 +40,7 @@ const products = [
     category: "Equipment",
     imageSrc: prodcut3,
     imageAlt: "Set of coloured resistance bands",
-    price: "$36",
+    priceUSD: 36,
     rating: 4,
     reviewCount: 62,
   },
@@ -43,7 +50,7 @@ const products = [
     category: "Supplements",
     imageSrc: prodcut4,
     imageAlt: "Magnesium supplement bottle",
-    price: "$22",
+    priceUSD: 22,
     rating: 5,
     reviewCount: 49,
   },
@@ -53,7 +60,7 @@ const products = [
     category: "Accessories",
     imageSrc: prodcut5,
     imageAlt: "BPA-free shaker bottle with measurement markings",
-    price: "$18",
+    priceUSD: 18,
     rating: 4,
     reviewCount: 38,
   },
@@ -103,7 +110,9 @@ export default function ProductSection() {
                   </div>
                 </div>
 
-                <p className={styles.price}>{product.price}</p>
+                <p className={styles.price}>
+                  {formatINR.format(product.priceUSD * USD_TO_INR)}
+                </p>
               </div>
             </div>
           ))}

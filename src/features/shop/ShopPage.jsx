@@ -1,11 +1,12 @@
 // ShopPage — /dashboard/shop
-// Hero banner → product description strip → product cards
-import { useMemo, useRef } from 'react'
+// Hero banner → product description strip → product cards + wishlist tab
+import { useMemo, useRef, useState } from 'react'
 import ShopHeroBanner from './components/ShopHeroBanner/ShopHeroBanner'
 import ProductCard from './components/ProductCard/ProductCard'
 import CartSummaryBar from './components/CartSummaryBar/CartSummaryBar'
 import { SHOP_PRODUCTS } from './data/shopData'
 import { useShopCartStore } from '../../store/useShopCartStore'
+import { useWishlistStore } from '../../store/useWishlistStore'
 import styles from './ShopPage.module.css'
 
 export default function ShopPage() {
@@ -13,7 +14,9 @@ export default function ShopPage() {
   const addItem = useShopCartStore((state) => state.addItem)
   const increaseItem = useShopCartStore((state) => state.increaseItem)
   const decreaseItem = useShopCartStore((state) => state.decreaseItem)
+  const wishlistIds = useWishlistStore((s) => s.ids)
   const productRef = useRef(null)
+  const [activeTab, setActiveTab] = useState('all')
 
   const itemCount = useMemo(
     () => Object.values(cart).reduce((sum, quantity) => sum + quantity, 0),
@@ -22,6 +25,11 @@ export default function ShopPage() {
   const total = useMemo(
     () => SHOP_PRODUCTS.reduce((sum, product) => sum + (cart[product.id] ?? 0) * product.price, 0),
     [cart]
+  )
+
+  const wishlistProducts = useMemo(
+    () => SHOP_PRODUCTS.filter((p) => wishlistIds.includes(p.id)),
+    [wishlistIds]
   )
 
   const scrollToProducts = () => {
@@ -54,19 +62,61 @@ export default function ShopPage() {
         )}
       </div>
 
-      {/* 5-col product grid */}
-      <div className={styles.grid}>
-        {SHOP_PRODUCTS.map((p) => (
-          <ProductCard
-            key={p.id}
-            product={p}
-            qty={cart[p.id] ?? 0}
-            onAdd={addItem}
-            onIncrease={increaseItem}
-            onDecrease={decreaseItem}
-          />
-        ))}
+      {/* Tabs */}
+      <div className={styles.tabs}>
+        <button
+          type="button"
+          className={`${styles.tab} ${activeTab === 'all' ? styles.tabActive : ''}`}
+          onClick={() => setActiveTab('all')}
+        >
+          All Products
+        </button>
+        <button
+          type="button"
+          className={`${styles.tab} ${activeTab === 'wishlist' ? styles.tabActive : ''}`}
+          onClick={() => setActiveTab('wishlist')}
+        >
+          Wishlist
+          {wishlistIds.length > 0 && (
+            <span className={styles.tabBadge}>{wishlistIds.length}</span>
+          )}
+        </button>
       </div>
+
+      {/* Product grid or wishlist */}
+      {activeTab === 'all' ? (
+        <div className={styles.grid}>
+          {SHOP_PRODUCTS.map((p) => (
+            <ProductCard
+              key={p.id}
+              product={p}
+              qty={cart[p.id] ?? 0}
+              onAdd={addItem}
+              onIncrease={increaseItem}
+              onDecrease={decreaseItem}
+            />
+          ))}
+        </div>
+      ) : wishlistProducts.length > 0 ? (
+        <div className={styles.grid}>
+          {wishlistProducts.map((p) => (
+            <ProductCard
+              key={p.id}
+              product={p}
+              qty={cart[p.id] ?? 0}
+              onAdd={addItem}
+              onIncrease={increaseItem}
+              onDecrease={decreaseItem}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className={styles.emptyWishlist}>
+          <span className={styles.emptyWishlistIcon}>🤍</span>
+          <p className={styles.emptyWishlistTitle}>Your wishlist is empty</p>
+          <p className={styles.emptyWishlistSub}>Tap the heart icon on any product to save it here.</p>
+        </div>
+      )}
 
       {/* Sticky cart bar */}
       <CartSummaryBar itemCount={itemCount} total={total} />

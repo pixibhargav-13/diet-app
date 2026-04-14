@@ -27,6 +27,37 @@
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #f3f4f6;
+  position: relative;
+}
+
+/* Wishlist heart button */
+.wishBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  z-index: 2;
+}
+
+.wishBtn:hover {
+  background: #fff;
+  color: #e53e3e;
+  transform: scale(1.1);
+}
+
+.wishBtnActive {
+  color: #e53e3e;
+  background: #fff;
 }
 
 .img {

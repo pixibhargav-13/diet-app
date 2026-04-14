@@ -1,0 +1,86 @@
+.page { display: flex; flex-direction: column; gap: 20px; }
+.pageHeader { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.heading { font-size: 1.4rem; font-weight: 800; color: #1a2535; margin: 0 0 4px; }
+.sub { font-size: 0.875rem; color: #6b7280; margin: 0; }
+
+.layout { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: flex-start; }
+@media (max-width: 768px) { .layout { grid-template-columns: 1fr; } }
+
+/* Calendar */
+.calendarCard { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 16px; width: 280px; }
+@media (max-width: 768px) { .calendarCard { width: 100%; } }
+.calHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.calNav { background: none; border: 1px solid #e5e7eb; border-radius: 6px; width: 28px; height: 28px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #374151; transition: background 0.15s; }
+.calNav:hover { background: #f3f4f6; }
+.calMonth { font-size: 0.9rem; font-weight: 700; color: #1a2535; }
+.calGrid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.calDayLabel { font-size: 0.65rem; font-weight: 600; color: #9ca3af; text-align: center; padding: 4px 0; text-transform: uppercase; }
+.calDay { position: relative; aspect-ratio: 1; border-radius: 6px; background: none; border: none; font-size: 0.78rem; color: #374151; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; }
+.calDay:hover { background: #f3f4f6; }
+.calDayToday { font-weight: 700; color: #2a4365; }
+.calDaySelected { background: #2a4365 !important; color: #fff !important; }
+.calDayBlocked { background: #fee2e2; color: #dc2626; }
+.calDayHasSlots { font-weight: 600; }
+.dot { position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: #22c55e; }
+.dotBlocked { position: absolute; bottom: 3px; left: 50%; transform: translateX(-50%); width: 4px; height: 4px; border-radius: 50%; background: #dc2626; }
+.calLegend { display: flex; gap: 12px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f3f4f6; }
+.legendItem { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; color: #6b7280; }
+.dotGreen { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+.dotRed   { width: 8px; height: 8px; border-radius: 50%; background: #dc2626; flex-shrink: 0; }
+
+/* Slot manager */
+.slotCard { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; padding: 20px; min-height: 200px; display: flex; flex-direction: column; gap: 14px; }
+.slotHeader { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.slotTitle { font-size: 0.95rem; font-weight: 700; color: #1a2535; margin: 0; }
+.blockBtn { padding: 6px 14px; border: 1px solid #e5e7eb; border-radius: 7px; background: #fff; font-size: 0.8rem; font-weight: 600; color: #374151; cursor: pointer; transition: background 0.15s; }
+.blockBtn:hover { background: #f3f4f6; }
+.blockBtnActive { background: #fee2e2; color: #dc2626; border-color: #fca5a5; }
+.blockedMsg { font-size: 0.85rem; color: #dc2626; background: #fff5f5; border: 1px solid #fca5a5; border-radius: 8px; padding: 10px 14px; margin: 0; }
+.slotSub { font-size: 0.75rem; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.04em; margin: 0; }
+.slotList { display: flex; flex-wrap: wrap; gap: 8px; min-height: 32px; }
+.slotChip { padding: 5px 12px; background: #eff6ff; color: #2563eb; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+.emptySlot { font-size: 0.8rem; color: #9ca3af; margin: 0; }
+.addSlotRow { display: flex; gap: 8px; }
+.slotInput { flex: 1; padding: 8px 12px; border: 1px solid #e5e7eb; border-radius: 7px; font-size: 0.85rem; color: #1a2535; }
+.slotInput:focus { outline: 2px solid #2a4365; }
+.addSlotBtn { padding: 8px 14px; background: #2a4365; color: #fff; border: none; border-radius: 7px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+.addSlotBtn:hover { background: #4a6fa5; }
+.slotEmpty { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #9ca3af; font-size: 0.85rem; text-align: center; padding: 20px; }
+
+/* Consultations */
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; }
+.cardHeader { padding: 14px 18px; border-bottom: 1px solid #f3f4f6; }
+.tabs { display: flex; gap: 4px; }
+.tabBtn { padding: 8px 14px; font-size: 0.85rem; font-weight: 500; color: #6b7280; background: none; border: none; border-radius: 7px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: background 0.15s, color 0.15s; }
+.tabBtn:hover { background: #f3f4f6; color: #2a4365; }
+.tabBtnActive { background: #eff6ff; color: #2a4365; font-weight: 600; }
+.tabCount { background: #e5e7eb; color: #6b7280; font-size: 0.68rem; font-weight: 700; padding: 1px 6px; border-radius: 20px; }
+.tabBtnActive .tabCount { background: #dbeafe; color: #2563eb; }
+
+.sessionList { display: flex; flex-direction: column; }
+.sessionRow { display: flex; align-items: flex-start; gap: 12px; padding: 14px 18px; border-bottom: 1px solid #f3f4f6; }
+.sessionRow:last-child { border-bottom: none; }
+.sessionAvatar { width: 36px; height: 36px; border-radius: 50%; background: #dbeafe; color: #1d4ed8; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.sessionInfo { flex: 1; min-width: 0; }
+.sessionClient { font-size: 0.9rem; font-weight: 600; color: #1a2535; margin: 0 0 2px; }
+.sessionMeta { font-size: 0.75rem; color: #9ca3af; margin: 0 0 4px; }
+.sessionType { color: #2563eb; font-weight: 600; }
+.sessionNotes { font-size: 0.78rem; color: #6b7280; margin: 0; background: #f8fafc; padding: 6px 10px; border-radius: 6px; border-left: 2px solid #2a4365; }
+.sessionActions { display: flex; gap: 6px; flex-shrink: 0; align-items: center; flex-wrap: wrap; }
+.preFormBtn { padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 7px; background: #fff; font-size: 0.78rem; font-weight: 600; color: #374151; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+.preFormBtn:hover { background: #f3f4f6; }
+.joinBtn { padding: 6px 12px; background: #2a4365; color: #fff; border: none; border-radius: 7px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+.joinBtn:hover { background: #4a6fa5; }
+
+/* Modal */
+.modalOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 300; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.modal { background: #fff; border-radius: 14px; width: min(500px, 100%); box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+.modalHeader { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid #e5e7eb; }
+.modalTitle { font-size: 0.95rem; font-weight: 700; color: #1a2535; margin: 0; }
+.modalClose { background: none; border: none; font-size: 1rem; color: #9ca3af; cursor: pointer; }
+.modalClose:hover { color: #374151; }
+.modalBody { padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.noteField { font-size: 0.85rem; color: #374151; margin: 0; padding: 8px 12px; background: #f8fafc; border-radius: 7px; }
+.noteField strong { color: #1a2535; }
+.modalFooter { padding: 14px 20px; border-top: 1px solid #e5e7eb; display: flex; justify-content: flex-end; }
+.modalCloseBtn { padding: 8px 20px; background: #2a4365; color: #fff; border: none; border-radius: 8px; font-size: 0.875rem; font-weight: 600; cursor: pointer; }

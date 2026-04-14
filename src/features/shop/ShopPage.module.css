@@ -57,6 +57,70 @@
   gap: 16px;
 }
 
+/* ── Tabs (All Products / Wishlist) ─────────────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.tab {
+  padding: 8px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab:hover { color: #2a4365; }
+
+.tabActive {
+  color: #2a4365;
+  border-bottom-color: #2a4365;
+}
+
+.tabBadge {
+  background: #e8f0fe;
+  color: #2a4365;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 20px;
+}
+
+/* Empty wishlist */
+.emptyWishlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 20px;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.emptyWishlistIcon { font-size: 2.5rem; }
+
+.emptyWishlistTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.emptyWishlistSub {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 
 /* 4 cols at medium screens */

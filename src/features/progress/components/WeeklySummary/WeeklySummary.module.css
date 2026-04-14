@@ -1,0 +1,66 @@
+.card {
+  background: #fff;
+  border: 1px solid #e8edf3;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon { color: #2a4365; }
+
+.title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a2535;
+  margin: 0;
+}
+
+.period {
+  font-size: 0.75rem;
+  color: #6b7a8d;
+  background: #f0f4f8;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.insights {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.insight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+}
+
+.insight.good   { background: #f0fdf4; color: #14532d; }
+.insight.warn   { background: #fffbeb; color: #78350f; }
+.insight.neutral { background: #f0f4f8; color: #334155; }
+
+.insightIcon { font-size: 1rem; flex-shrink: 0; }
+
+.insightText { font-weight: 500; }
+
+.empty {
+  font-size: 0.82rem;
+  color: #9aa5b1;
+  margin: 0;
+  padding: 8px 0;
+}

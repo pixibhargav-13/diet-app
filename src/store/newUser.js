@@ -9,4 +9,15 @@ export const demoUser = {
   createdAt: new Date().toISOString(),
 };
 
+export const adminUser = {
+  id: "admin-user-1",
+  firstName: "Test",
+  lastName: "Admin",
+  email: "admin@example.com",
+  password: "admin@123", // NOSONAR
+  role: "admin",
+  onboardingComplete: true,
+  createdAt: new Date().toISOString(),
+};
+
 export default demoUser;

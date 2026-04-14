@@ -1,0 +1,170 @@
+.card {
+  background: #fff;
+  border: 1px solid #e8edf3;
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a2535;
+  margin: 0;
+}
+
+.sub {
+  font-size: 0.75rem;
+  color: #6b7a8d;
+  margin: 2px 0 0;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.badge[data-status='done'] { background: #d1fae5; color: #065f46; }
+.badge[data-status='good'] { background: #dbeafe; color: #1d4ed8; }
+.badge[data-status='low']  { background: #fef3c7; color: #92400e; }
+
+.main {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.count {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a2535;
+  line-height: 1;
+}
+
+.unit {
+  font-size: 0.8rem;
+  color: #6b7a8d;
+}
+
+.ringWrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  align-self: center;
+}
+
+.ring { width: 80px; height: 80px; transform: rotate(-90deg); }
+
+.ringBg {
+  fill: none;
+  stroke: #e8edf3;
+  stroke-width: 8;
+}
+
+.ringFill {
+  fill: none;
+  stroke: #2a4365;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.ringLabel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1a2535;
+}
+
+.chartSection { display: flex; flex-direction: column; gap: 6px; }
+
+.chartTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b7a8d;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 56px;
+}
+
+.barCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  height: 100%;
+}
+
+.barTrack {
+  flex: 1;
+  width: 100%;
+  background: #f0f4f8;
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.barFill {
+  width: 100%;
+  background: #2a4365;
+  border-radius: 4px 4px 0 0;
+  min-height: 4px;
+  transition: height 0.4s ease;
+}
+
+.barLabel {
+  font-size: 0.65rem;
+  color: #9aa5b1;
+  font-weight: 500;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 4px;
+  border-top: 1px solid #f0f4f8;
+}
+
+.stat { display: flex; flex-direction: column; gap: 1px; }
+
+.statVal {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a2535;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  color: #6b7a8d;
+}
+
+.statDivider {
+  width: 1px;
+  height: 28px;
+  background: #e8edf3;
+}

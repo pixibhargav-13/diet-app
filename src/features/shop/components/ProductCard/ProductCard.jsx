@@ -1,6 +1,7 @@
-// ProductCard — product card with qty controls, no wishlist
+// ProductCard — product card with qty controls and wishlist toggle
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import { useWishlistStore } from '../../../../store/useWishlistStore'
 import styles from './ProductCard.module.css'
 
 function StarIcon() {
@@ -14,6 +15,8 @@ function StarIcon() {
 export default function ProductCard({ product, qty, onAdd, onIncrease, onDecrease }) {
   const navigate = useNavigate()
   const inCart = qty > 0
+  const toggle = useWishlistStore((s) => s.toggle)
+  const wishlisted = useWishlistStore((s) => s.isWishlisted(product.id))
 
   const openProductDetails = () => {
     navigate(`/dashboard/shop/${product.id}`)
@@ -44,6 +47,17 @@ export default function ProductCard({ product, qty, onAdd, onIncrease, onDecreas
       {/* Image */}
       <div className={styles.imgWrap}>
         <img src={product.img} alt={product.name} className={styles.img} />
+        <button
+          type="button"
+          className={`${styles.wishBtn} ${wishlisted ? styles.wishBtnActive : ''}`}
+          onClick={(e) => handleActionClick(e, () => toggle(product.id))}
+          aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+          aria-pressed={wishlisted}
+        >
+          <svg viewBox="0 0 24 24" fill={wishlisted ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+        </button>
       </div>
 
       {/* Info */}
