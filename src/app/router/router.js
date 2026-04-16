@@ -29,6 +29,9 @@ const NutritionAnalysisPage = lazy(() =>
 const GroceryListPage = lazy(() =>
     import("../../features/journal/pages/GroceryListPage")
 );
+const FoodSearchPage = lazy(() =>
+    import("../../features/journal/pages/FoodSearchPage")
+);
 const ProgressPage = lazy(() => import("../../features/progress/ProgressPage"));
 const ConsultPage = lazy(() => import("../../features/consult/ConsultPage"));
 const ShopPage = lazy(() => import("../../features/shop/ShopPage"));
@@ -115,6 +118,10 @@ export const router = createBrowserRouter([
                     {
                         path: "grocery-list",
                         element: routeElement(GroceryListPage),
+                    },
+                    {
+                        path: "food-lookup",
+                        element: routeElement(FoodSearchPage),
                     },
                 ],
             },

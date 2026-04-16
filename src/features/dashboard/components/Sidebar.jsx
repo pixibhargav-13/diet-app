@@ -60,6 +60,10 @@ const NAV = [
         name: "Grocery list",
         to: "/dashboard/journal/grocery-list",
       },
+      {
+        name: "Food Lookup",
+        to: "/dashboard/journal/food-lookup",
+      },
     ],
   },
   {

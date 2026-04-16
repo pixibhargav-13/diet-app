@@ -1,0 +1,814 @@
+/* FoodSearchPage.module.css */
+
+/* ── Page shell ── */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: 40px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.heading {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px;
+}
+
+.sub {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ── Provider status dots (top-right) ── */
+.providerStatus {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.providerDot {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.providerDotActive {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.providerDotWarn {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.providerDotDim {
+  background: #f3f4f6;
+  color: #9ca3af;
+}
+
+/* ── Search bar ── */
+.searchWrap {
+  width: 100%;
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  border-radius: 14px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  min-height: 52px;
+  padding: 13px 48px 13px 46px;
+  font-size: 1rem;
+  color: #1f2933;
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.05);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.searchInput:focus {
+  border-color: #2a4365;
+  box-shadow: 0 0 0 3px rgba(42, 67, 101, 0.1);
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.inputSpinner {
+  position: absolute;
+  right: 16px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e5e7eb;
+  border-top-color: #2a4365;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+.clearBtn {
+  position: absolute;
+  right: 14px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: #e5e7eb;
+  color: #4b5563;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s;
+}
+
+.clearBtn:hover { background: #d1d5db; }
+
+/* ── Two-column layout ── */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* ── Results column ── */
+.resultsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stateBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e5e7eb;
+  border-top-color: #2a4365;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  flex-shrink: 0;
+}
+
+.errIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fee2e2;
+  color: #dc2626;
+  font-weight: 800;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.resultsList {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.providerLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.providerBadge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #4b5563;
+  background: #f3f4f6;
+  padding: 2px 9px;
+  border-radius: 20px;
+}
+
+.resultCount {
+  font-size: 0.72rem;
+  color: #9ca3af;
+}
+
+.resultRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.resultRow:last-child { border-bottom: none; }
+
+.resultRow:hover { background: #f9fafb; }
+
+.resultRowActive {
+  background: #eff6ff !important;
+  border-left: 3px solid #2a4365;
+}
+
+.resultThumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #dbeafe;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resultImg { width: 100%; height: 100%; object-fit: cover; }
+
+.resultInitial {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1d4ed8;
+}
+
+.resultInfo { flex: 1; min-width: 0; }
+
+.resultName {
+  margin: 0 0 2px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2933;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultMeta {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resultBrand { color: #2563eb; font-weight: 600; }
+
+.dot { color: #d1d5db; }
+
+/* Source tags */
+.sourceTag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.src_nutritionix { background: #dbeafe; color: #1d4ed8; }
+.src_usda { background: #d1fae5; color: #065f46; }
+.src_mock { background: #fef3c7; color: #92400e; }
+
+/* Empty state */
+.emptySearch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 40px 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 72px;
+  height: 72px;
+  background: #f3f4f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+}
+
+.emptyTitle {
+  margin: 6px 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1f2933;
+}
+
+.emptySub {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+  max-width: 320px;
+}
+
+.suggestionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.suggestion {
+  padding: 5px 13px;
+  background: #f3f4f6;
+  color: #374151;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: default;
+}
+
+/* ── Detail panel ── */
+.detailCol { position: sticky; top: 16px; }
+
+.detailCard {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.detailLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 20px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.detailPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 60px 28px;
+  text-align: center;
+}
+
+.placeholderTitle {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2933;
+}
+
+.placeholderSub {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  max-width: 260px;
+  line-height: 1.6;
+}
+
+/* Detail head */
+.detailHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 18px 16px;
+}
+
+.detailThumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #dbeafe;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detailImg { width: 100%; height: 100%; object-fit: cover; }
+
+.detailInitial {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1d4ed8;
+}
+
+.detailMeta { flex: 1; min-width: 0; }
+
+.detailName {
+  margin: 0 0 3px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a2535;
+  line-height: 1.3;
+}
+
+.detailBrand {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.sourceChip {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.detailDivider {
+  height: 1px;
+  background: #f3f4f6;
+  margin: 0;
+}
+
+/* Serving selector */
+.servingSection {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.perNote {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: #9ca3af;
+  font-size: 0.75rem;
+}
+
+.servingChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.servingChip {
+  padding: 6px 11px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.servingChip:hover { border-color: #9ca3af; background: #f9fafb; }
+
+.servingChipActive {
+  background: #2a4365;
+  border-color: #2a4365;
+  color: #ffffff;
+}
+
+.stepperRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stepBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.stepBtn:hover { background: #f3f4f6; border-color: #9ca3af; }
+
+.multInput {
+  width: 60px;
+  padding: 6px 10px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2933;
+  outline: none;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+
+.multInput::-webkit-outer-spin-button,
+.multInput::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.multInput:focus { border-color: #2a4365; background: #ffffff; }
+
+.gramsLabel { font-size: 0.82rem; color: #6b7280; }
+
+.customRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customInput {
+  width: 120px;
+  padding: 8px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f9fafb;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2933;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.customInput::-webkit-outer-spin-button,
+.customInput::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.customInput:focus { border-color: #2a4365; background: #ffffff; }
+
+.customUnit { font-size: 0.85rem; color: #6b7280; font-weight: 600; }
+
+/* Calorie hero */
+.kcalHero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 20px 18px 14px;
+}
+
+.kcalRing {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0f5ff 0%, #e0ecff 100%);
+  border: 3px solid #dbeafe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.kcalNumber {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1a2535;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.kcalWord {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.kcalSub {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* Macro bars */
+.macroBars {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 18px 18px;
+}
+
+.macroBarRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.macroBarMeta {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.macroBarLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.macroBarValue {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+.macroBarTrack {
+  flex: 1;
+  height: 8px;
+  background: #f3f4f6;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.macroBarFill {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 0.35s ease;
+  min-width: 4px;
+}
+
+.macroBarPct {
+  width: 34px;
+  text-align: right;
+  font-size: 0.72rem;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+/* Nutrition table */
+.nutriTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin: 8px 0 0;
+}
+
+.nutriRow { border-bottom: 1px solid #f9fafb; }
+.nutriRow:last-child { border-bottom: none; }
+
+.nutriLabel {
+  padding: 7px 18px;
+  color: #374151;
+}
+
+.nutriValue {
+  padding: 7px 18px 7px 0;
+  text-align: right;
+  font-weight: 600;
+  color: #1a2535;
+}
+
+.nutriRowBold .nutriLabel,
+.nutriRowBold .nutriValue {
+  font-weight: 800;
+  font-size: 0.88rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #111827;
+}
+
+.nutriRowIndent .nutriLabel {
+  padding-left: 30px;
+  color: #6b7280;
+  font-size: 0.78rem;
+}
+
+.nutriRowIndent .nutriValue {
+  color: #6b7280;
+  font-size: 0.78rem;
+}
+
+/* Per-100g reference box */
+.per100Box {
+  margin: 0 18px 18px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.per100Title {
+  margin: 0 0 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.per100Grid {
+  display: flex;
+  gap: 0;
+  justify-content: space-between;
+}
+
+.per100Cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.per100Val {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1a2535;
+  letter-spacing: -0.01em;
+}
+
+.per100Lbl {
+  font-size: 0.62rem;
+  color: #9ca3af;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .detailCol {
+    position: static;
+  }
+}
+
+@media (max-width: 540px) {
+  .heading { font-size: 1.5rem; }
+
+  .searchInput {
+    font-size: 0.9rem;
+    min-height: 48px;
+    padding-left: 42px;
+  }
+
+  .per100Grid { gap: 0; }
+
+  .macroBarMeta { width: 80px; }
+
+  .kcalRing {
+    width: 90px;
+    height: 90px;
+  }
+
+  .kcalNumber { font-size: 1.5rem; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
