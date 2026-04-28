@@ -45,6 +45,10 @@ const DietPlanManagement = lazy(() => import("../../features/admin/pages/DietPla
 const StoreInventory = lazy(() => import("../../features/admin/pages/StoreInventory"));
 const RevenuePayments = lazy(() => import("../../features/admin/pages/RevenuePayments"));
 const SchedulingConsultations = lazy(() => import("../../features/admin/pages/SchedulingConsultations"));
+const SessionScheduler = lazy(() => import("../../features/admin/pages/SessionScheduler"));
+const PackageManagement = lazy(() => import("../../features/admin/pages/PackageManagement"));
+const PolicySettings = lazy(() => import("../../features/admin/pages/PolicySettings"));
+const MySessionsPage = lazy(() => import("../../features/sessions/MySessionsPage"));
 
 function withSuspense(element) {
     return createElement(Suspense, { fallback: null }, element);
@@ -130,6 +134,7 @@ export const router = createBrowserRouter([
             { path: "shop", element: routeElement(ShopPage) },
             { path: "shop/:productId", element: routeElement(ProductDetailPage) },
             { path: "shop/checkout", element: routeElement(CheckoutPage) },
+            { path: "sessions", element: routeElement(MySessionsPage) },
         ],
     },
 
@@ -143,6 +148,9 @@ export const router = createBrowserRouter([
             { path: "store",        element: routeElement(StoreInventory) },
             { path: "revenue",      element: routeElement(RevenuePayments) },
             { path: "scheduling",   element: routeElement(SchedulingConsultations) },
+            { path: "sessions",     element: routeElement(SessionScheduler) },
+            { path: "packages",     element: routeElement(PackageManagement) },
+            { path: "policies",     element: routeElement(PolicySettings) },
         ],
     },
 

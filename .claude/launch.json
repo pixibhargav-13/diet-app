@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Diet App Frontend (Vite)",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5173,
+      "cwd": "D:/diet-app/diet-app"
+    },
+    {
+      "name": "Diet App Backend (Spring Boot)",
+      "runtimeExecutable": "mvn",
+      "runtimeArgs": ["-pl", "web-app", "spring-boot:run"],
+      "port": 8080,
+      "cwd": "../diet-app-backend"
+    }
+  ]
+}

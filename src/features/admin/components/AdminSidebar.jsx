@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../../../store/useAuthStore'
+import { useYogaSessionStore } from '../../../store/useYogaSessionStore'
 import styles from './AdminSidebar.module.css'
 
 const NAV = [
@@ -72,11 +73,44 @@ const NAV = [
       </svg>
     ),
   },
+  {
+    label: 'Sessions',
+    to: '/admin/sessions',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        <circle cx="12" cy="3" r="1"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Packages',
+    to: '/admin/packages',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+        <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/>
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+        <line x1="12" y1="22.08" x2="12" y2="12"/>
+      </svg>
+    ),
+  },
+  {
+    label: 'Policies',
+    to: '/admin/policies',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    ),
+  },
 ]
 
 export default function AdminSidebar({ onClose }) {
   const navigate = useNavigate()
   const logout = useAuthStore((s) => s.logout)
+  const pendingCount = useYogaSessionStore((s) => s.rescheduleRequests.filter(r => r.status === 'pending').length)
 
   const handleLogout = () => {
     logout()
@@ -110,6 +144,9 @@ export default function AdminSidebar({ onClose }) {
           >
             <span className={styles.icon}>{item.icon}</span>
             {item.label}
+            {item.label === 'Sessions' && pendingCount > 0 && (
+              <span className={styles.pendingBadge}>{pendingCount}</span>
+            )}
           </NavLink>
         ))}
       </nav>
